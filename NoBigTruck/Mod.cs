@@ -32,6 +32,8 @@ namespace NoBigTruck
                     "WHATSNEW_2_0_0_2",
                     "WHATSNEW_2_0_0_3",
                     "WHATSNEW_2_0_0_4",
+                    "WHATSNEW_2_0_0_5",
+                    "WHATSNEW_2_0_0_6",
                 },
             },
         };

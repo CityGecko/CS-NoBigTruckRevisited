@@ -25,6 +25,8 @@
 "WHATSNEW_2_0_0_1","No Big Truck Revisited führt No Big Truck von MacSergey für Spielversion 1.21 weiter."
 "WHATSNEW_2_0_0_2","Deine bestehenden Regeln bleiben erhalten."
 "WHATSNEW_2_0_0_3","Neuer Zieltyp Wall-to-Wall."
+"WHATSNEW_2_0_0_5","Neue Optionsseite: je Regel eine Gruppe mit Checkboxen; jede Änderung wird sofort gespeichert und neben der Regel angezeigt (""Gespeichert um ..."")."
+"WHATSNEW_2_0_0_6","Arbeitet mit Vehicle Selector zusammen: Wo Vehicle Selector die Fahrzeuge wählt, hat es Vorrang. No Big Truck filtert weiterhin Lieferungen von Außenverbindungen und verhindert, dass große LKW zu kleinen Läden umgeleitet werden."
 "STATUS_SAVED","Gespeichert um {0} ({1})"
 "STATUS_SECONDS_AGO","vor {0} s"
 "STATUS_MINUTES_AGO","vor {0} min"
