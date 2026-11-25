@@ -5,7 +5,7 @@ Stand: 25.11.2026. Grundlage: `dev/1.21` (NBT 1.3.2, im Spiel bestätigt unter 1
 ## Entscheidungen (25.11.2026)
 
 - Basis: **AlgernonCommons** (MIT), wie AVO 1.10.
-- Name: **No Big Truck Revisited**, eigener Workshop-Eintrag. Versionsnummer noch offen (Vorschlag 2.0.0).
+- Name: **No Big Truck Revisited**, eigener Workshop-Eintrag, Version **2.0.0**.
 - Optionsseite: **Checkboxen** je Regel (Quellen, Zieltypen, Größe prüfen) plus zwei Zahlenfelder.
 - Vor dem Umbau wird der Stand 1.3.2 lokal committet; Name/E-Mail dafür gibt der User noch an.
 
@@ -55,10 +55,17 @@ No Big Truck selbst steht unter MIT und darf weitergeführt werden.
 
 ## Veröffentlichung
 
-- Eigener Workshop-Eintrag (neue ID), Titel „No Big Truck Revisited“, Version noch offen (Vorschlag 2.0.0).
+- Eigener Workshop-Eintrag (neue ID), Titel „No Big Truck Revisited“, Version 2.0.0.
 - `LICENSE` (MIT, MacSergey) bleibt; ergänzt um eigenes Copyright für neue Teile und den MIT-Text von AlgernonCommons
   (`AlgernonCommons/LICENSE.txt`, wird mitgeliefert). Credits: MacSergey (Original), Will (1.21-Anpassung), algernon (AlgernonCommons).
 - AVO erkennt NBT weiter über den Prefix auf `IsNBTActive`, unabhängig von der Workshop-ID.
+
+## Stand der Umsetzung (25.11.2026)
+
+Schritte 1 bis 6 erledigt auf `dev/2.0`: AlgernonCommons-Submodul (3197277, wie AVO 1.10), neue Dateien `Mod.cs`,
+`Loading.cs`, `Patcher.cs`, `Patches.cs`, `Plugins.cs`, `Rules.cs`, `ModSettings.cs`, `OptionsPanel.cs`; Übersetzungen per
+`tools/resx2csv.py` aus `tools/legacy-resx`. Build Release/Debug: 0 Fehler, 0 Warnungen.
+Lokaler Mod-Ordner: `Addons\Mods\NoBigTruckRevisited`. Offen: Spieltest (Schritt 7), Workshop-Texte und Vorschaubild (Schritt 8).
 
 ## Arbeitsschritte
 

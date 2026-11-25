@@ -1,237 +1,51 @@
-﻿using ColossalFramework.Math;
-using HarmonyLib;
-using ICities;
-using ModsCommon;
-using ModsCommon.Utilities;
+﻿// MIT License, see LICENSE. Original mod by MacSergey (No Big Truck), continued as No Big Truck Revisited.
+
 using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Reflection;
-using System.Reflection.Emit;
-using static ColossalFramework.Plugins.PluginManager;
+using AlgernonCommons;
+using AlgernonCommons.Notifications;
+using AlgernonCommons.Patching;
+using AlgernonCommons.Translation;
+using ICities;
 
 namespace NoBigTruck
 {
-    public class Mod : BasePatcherMod<Mod>
+    /// <summary>
+    /// Mod entry point. Base classes from AlgernonCommons (MIT, algernon).
+    /// </summary>
+    public sealed class Mod : PatcherMod<OptionsPanel, Patcher>, IUserMod
     {
-        public override string NameRaw => "No Big Truck";
-        public override string Description => !IsBeta ? Localize.Mod_Description : CommonLocalize.Mod_DescriptionBeta;
+        public override string BaseName => "No Big Truck Revisited";
 
-        protected override ulong StableWorkshopId => 2069057130ul;
-        protected override ulong BetaWorkshopId => 2513186434ul;
-        public override string CrowdinUrl => "https://crowdin.com/translate/macsergey-other-mods/74";
+        public override string HarmonyID => "citygecko.nobigtruck.revisited";
 
-        public override List<ModVersion> Versions { get; } = new List<ModVersion>
+        public string Description => Translations.Translate("MOD_DESCRIPTION");
+
+        public override WhatsNewMessage[] WhatsNewMessages => new WhatsNewMessage[]
         {
-            new ModVersion(new Version("1.3.2"), new DateTime(2026, 11, 24)),
-            new ModVersion(new Version("1.3"), new DateTime(2022, 9, 14)),
-            new ModVersion(new Version("1.2.4"), new DateTime(2021, 8, 22)),
-            new ModVersion(new Version("1.2.3"), new DateTime(2021, 8, 7)),
-            new ModVersion(new Version("1.2.2"), new DateTime(2021, 8, 1)),
-            new ModVersion(new Version("1.2.1"), new DateTime(2021, 7, 21)),
-            new ModVersion(new Version("1.2"), new DateTime(2021, 6, 12)),
-            new ModVersion(new Version("1.1"), new DateTime(2021, 5, 24)),
-            new ModVersion(new Version("1.0"), new DateTime(2020, 6, 19)),
+            new WhatsNewMessage
+            {
+                Version = new Version("2.0.0.0"),
+                MessagesAreKeys = true,
+                Messages = new string[]
+                {
+                    "WHATSNEW_2_0_0_1",
+                    "WHATSNEW_2_0_0_2",
+                    "WHATSNEW_2_0_0_3",
+                    "WHATSNEW_2_0_0_4",
+                },
+            },
         };
 
-        protected override Version RequiredGameVersion => new Version(1, 21, 2, 5);
-
-#if BETA
-        public override bool IsBeta => true;
-#else
-        public override bool IsBeta => false;
-#endif
-        protected override string IdRaw => nameof(NoBigTruck);
-
-        protected override LocalizeManager LocalizeManager => Localize.LocaleManager;
-        protected override List<BaseDependencyInfo> DependencyInfos
+        public override void LoadSettings()
         {
-            get
-            {
-                var infos = base.DependencyInfos;
-
-                var info = new NeedDependencyInfo(DependencyState.Enable, AVOSearcher, AVOName, AVOId);
-                infos.Add(info);
-
-                return infos;
-            }
-        }
-        private static string AVOName => "Advanced Vehicle Options";
-        private static ulong AVOId => 1548831935ul;
-        private static PluginSearcher AVOSearcher { get; } = PluginUtilities.GetSearcher(AVOName, AVOId);
-        public static PluginInfo AVO => PluginUtilities.GetPlugin(AVOSearcher);
-
-        private static string VehicleSelectorName => "Vehicle Selector";
-        private static ulong VehicleSelectorId => 2882769913ul;
-        private static PluginSearcher VehicleSelectorSearcher { get; } = PluginUtilities.GetSearcher(VehicleSelectorName, VehicleSelectorId);
-        public static PluginInfo VehicleSelector => PluginUtilities.GetPlugin(VehicleSelectorSearcher);
-
-        protected override void GetSettings(UIHelperBase helper)
-        {
-            var settings = new Settings();
-            settings.OnSettingsUI(helper);
-        }
-        protected override void SetCulture(CultureInfo culture) => Localize.Culture = culture;
-
-        #region PATCHER
-
-        protected override bool PatchProcess()
-        {
-            var success = true;
-
-            success &= IndustrialBuildingAI_StartTransfer_Patch();
-            success &= IndustrialExtractorAI_StartTransfer_Patch();
-            success &= OutsideConnectionAI_StartConnectionTransferImpl_Patch();
-            success &= WarehouseAI_StartTransfer_Patch();
-            success &= CargoTruckAI_ChangeVehicleType_Patch();
-            success &= VehicleManager_RefreshTransferVehicles_Patch();
-            success &= CargoTruckAI_StartTransfer_Patch();
-
-            if (AVO is null)
-                Logger.Debug("Advanced Vehicle Options not exist, skip patches");
-            else
-                AVOPatch(ref success);
-
-            return success;
+            ModSettings.Load();
+            RuleSettings.Load();
         }
 
-        private bool IndustrialBuildingAI_StartTransfer_Patch()
+        public override void SaveSettings()
         {
-            return AddTranspiler(typeof(Patcher), nameof(Patcher.StartTransfer_Transpiler), typeof(IndustrialBuildingAI), nameof(IndustrialBuildingAI.StartTransfer));
-        }
-        private bool IndustrialExtractorAI_StartTransfer_Patch()
-        {
-            return AddTranspiler(typeof(Patcher), nameof(Patcher.StartTransfer_Transpiler), typeof(IndustrialExtractorAI), nameof(IndustrialExtractorAI.StartTransfer));
-        }
-        private bool OutsideConnectionAI_StartConnectionTransferImpl_Patch()
-        {
-            return AddTranspiler(typeof(Patcher), nameof(Patcher.StartTransfer_Transpiler), typeof(OutsideConnectionAI), "StartConnectionTransferImpl");
-        }
-        private bool WarehouseAI_StartTransfer_Patch()
-        {
-            return AddTranspiler(typeof(Patcher), nameof(Patcher.WarehouseAI_StartTransfer_Transpiler), typeof(WarehouseAI), nameof(WarehouseAI.StartTransfer));
-        }
-        private bool CargoTruckAI_ChangeVehicleType_Patch()
-        {
-            return AddTranspiler(typeof(Patcher), nameof(Patcher.CargoTruckAI_ChangeVehicleType_Transpiler), typeof(CargoTruckAI), nameof(CargoTruckAI.ChangeVehicleType), new Type[] { typeof(VehicleInfo), typeof(ushort), typeof(Vehicle).MakeByRefType(), typeof(PathUnit.Position), typeof(uint) });
-        }
-        private bool CargoTruckAI_StartTransfer_Patch()
-        {
-            return AddPrefix(typeof(Patcher), nameof(Patcher.CargoTruckAI_StartTransfer_Prefix), typeof(CargoTruckAI), nameof(CargoTruckAI.StartTransfer), new Type[] { typeof(ushort), typeof(Vehicle).MakeByRefType(), typeof(TransferManager.TransferReason), typeof(TransferManager.TransferOffer) });
-        }
-        private bool VehicleManager_RefreshTransferVehicles_Patch()
-        {
-            return AddPostfix(typeof(Manager), nameof(Manager.RefreshTransferVehicles), typeof(VehicleManager), nameof(VehicleManager.RefreshTransferVehicles));
-        }
-        private void AVOPatch(ref bool success)
-        {
-            success &= AddPostfix(typeof(Manager), nameof(Manager.AVOCheckChanged), AccessTools.TypeByName("AdvancedVehicleOptionsUID.GUI.UIOptionPanel"), "OnCheckChanged");
-            success &= AddPrefix(typeof(Patcher), nameof(Patcher.NBTCheckPrefix), AccessTools.TypeByName("AdvancedVehicleOptionsUID.Compatibility.NoBigTruckCompatibilityPatch"), "IsNBTActive");
-        }
-
-        #endregion
-    }
-    public class LoadingExtension : BaseLoadingExtension<Mod> { }
-    public static class Patcher
-    {
-        private static MethodInfo ReplaceMethod { get; }
-        static Patcher()
-        {
-            ReplaceMethod = AccessTools.Method(typeof(VehicleManager), nameof(VehicleManager.GetRandomVehicleInfo), new Type[] { typeof(Randomizer).MakeByRefType(), typeof(ItemClass.Service), typeof(ItemClass.SubService), typeof(ItemClass.Level) });
-        }
-
-        public static IEnumerable<CodeInstruction> StartTransfer_Transpiler(MethodBase original, ILGenerator generator, IEnumerable<CodeInstruction> instructions)
-        {
-            if ((Mod.VehicleSelector?.isEnabled ?? false) && original.DeclaringType != typeof(OutsideConnectionAI))
-            {
-                foreach (var instruction in instructions)
-                    yield return instruction;
-                yield break;
-            }
-
-            foreach (var instruction in instructions)
-            {
-                if (instruction.opcode == OpCodes.Callvirt && instruction.operand == ReplaceMethod)
-                {
-                    yield return new CodeInstruction(OpCodes.Ldarg_S, original.IsStatic ? 0 : 1);
-                    yield return new CodeInstruction(OpCodes.Ldarga_S, original.IsStatic ? 3 : 4);
-                    yield return new CodeInstruction(OpCodes.Call, AccessTools.PropertyGetter(typeof(TransferManager.TransferOffer), nameof(TransferManager.TransferOffer.Building)));
-                    yield return new CodeInstruction(OpCodes.Ldarg_S, original.IsStatic ? 2 : 3);
-                    yield return new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(Manager), nameof(Manager.GetRandomVehicleInfo)));
-                }
-                else
-                    yield return instruction;
-            }
-        }
-        public static IEnumerable<CodeInstruction> WarehouseAI_StartTransfer_Transpiler(MethodBase original, ILGenerator generator, IEnumerable<CodeInstruction> instructions)
-        {
-            if (Mod.VehicleSelector?.isEnabled ?? false)
-            {
-                foreach (var instruction in instructions)
-                    yield return instruction;
-                yield break;
-            }
-
-            var method = AccessTools.Method(typeof(WarehouseAI), nameof(WarehouseAI.GetTransferVehicleService));
-            foreach (var instruction in instructions)
-            {
-                if (instruction.opcode == OpCodes.Call && instruction.operand == method)
-                {
-                    yield return new CodeInstruction(OpCodes.Ldarg_S, 1);
-                    yield return new CodeInstruction(OpCodes.Ldarga_S, 4);
-                    yield return new CodeInstruction(OpCodes.Call, AccessTools.PropertyGetter(typeof(TransferManager.TransferOffer), nameof(TransferManager.TransferOffer.Building)));
-                    yield return new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(Manager), nameof(Manager.GetTransferVehicleService)));
-                }
-                else
-                    yield return instruction;
-            }
-        }
-        public static IEnumerable<CodeInstruction> CargoTruckAI_ChangeVehicleType_Transpiler(MethodBase original, ILGenerator generator, IEnumerable<CodeInstruction> instructions)
-        {
-            if (Mod.VehicleSelector?.isEnabled ?? false)
-            {
-                foreach (var instruction in instructions)
-                    yield return instruction;
-                yield break;
-            }
-
-            foreach (var instruction in instructions)
-            {
-                if (instruction.opcode == OpCodes.Callvirt && instruction.operand == ReplaceMethod)
-                {
-                    yield return new CodeInstruction(OpCodes.Ldloc_S, 6);
-                    yield return new CodeInstruction(OpCodes.Ldloc_S, 7);
-                    yield return new CodeInstruction(OpCodes.Ldarg_2);
-                    yield return new CodeInstruction(OpCodes.Ldfld, AccessTools.Field(typeof(Vehicle), nameof(Vehicle.m_transferType)));
-                    yield return new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(Manager), nameof(Manager.GetRandomVehicleInfo)));
-                }
-                else
-                    yield return instruction;
-            }
-        }
-
-        // A loaded cargo truck that lost its target (rest of the load after a partial delivery, arrival from a
-        // cargo train/ship at the destination station, target gone) offers itself to the TransferManager and
-        // gets a new target here - no vehicle is selected, so the GetRandomVehicleInfo patches never see it.
-        // Large vehicles must not be sent to buildings covered by a rule: the target is refused, the truck keeps
-        // waiting and, as in vanilla when no target is found, returns with its load after a short time.
-        // No new offer is added here on purpose: this runs inside TransferManager's matching loop.
-        public static bool CargoTruckAI_StartTransfer_Prefix(ushort vehicleID, ref Vehicle data, TransferManager.TransferReason material, TransferManager.TransferOffer offer)
-        {
-            if (material != TransferManager.TransferReason.Goods || material != (TransferManager.TransferReason)data.m_transferType || (data.m_flags & Vehicle.Flags.WaitingTarget) == 0)
-                return true;
-
-            var info = data.Info;
-            if (info == null || !info.m_isLargeVehicle)
-                return true;
-
-            return !Manager.IsRestrictedTarget(data.m_sourceBuilding, offer.Building);
-        }
-
-        public static bool NBTCheckPrefix(ref bool __result)
-        {
-            __result = true;
-            return false;
+            ModSettings.Save();
+            RuleSettings.Save();
         }
     }
 }

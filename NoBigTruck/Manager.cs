@@ -2,7 +2,7 @@
 using ColossalFramework.Math;
 using ColossalFramework.UI;
 using HarmonyLib;
-using ModsCommon;
+using AlgernonCommons;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,7 +39,7 @@ namespace NoBigTruck
         public static void RefreshTransferVehicles()
         {
 #if DEBUG
-            SingletonMod<Mod>.Logger.Debug(nameof(RefreshTransferVehicles));
+            Logging.Message(nameof(RefreshTransferVehicles));
 #endif
             NoBigTrucks.Clear();
         }
@@ -64,7 +64,7 @@ namespace NoBigTruck
                         vehicles.Add(vehicleInfo);
                 }
 #if DEBUG
-                SingletonMod<Mod>.Logger.Debug($"Transfer index {transferIndex}: {vehicles.Count} Vehicles");
+                Logging.Message($"Transfer index {transferIndex}: {vehicles.Count} Vehicles");
 #endif
             }
 
@@ -100,7 +100,7 @@ namespace NoBigTruck
                 selectVehicle ??= manager.GetRandomVehicleInfo(ref r, service, subService, level);
 #if DEBUG
                 log += $"\n\t{(selectVehicle != null ? $"Selected vehicle: { selectVehicle.name}" : "Vehicle not found")}";
-                SingletonMod<Mod>.Logger.Debug(log);
+                Logging.Message(log);
 #endif
                 return selectVehicle;
             }
@@ -125,7 +125,7 @@ namespace NoBigTruck
 #if DEBUG
             var log = $"\n\tRefuse new target for large vehicle? source={sourceBuildingId}; target={targetBuildingId};";
             var result = CheckRules(sourceBuildingId, targetBuildingId, ref log);
-            SingletonMod<Mod>.Logger.Debug(log + $"\n\t{(result ? "Refused" : "Allowed")}");
+            Logging.Message(log + $"\n\t{(result ? "Refused" : "Allowed")}");
             return result;
 #else
             return CheckRules(sourceBuildingId, targetBuildingId);
@@ -144,7 +144,7 @@ namespace NoBigTruck
             var buildingLength = targetBuildingInfo.m_cellLength;
             var buildingWidth = targetBuildingInfo.m_cellWidth;
 
-            var result = SourceBuildingTypes.All.IsFlagSet(sourceType) && TargetBuildingTypes.All.IsFlagSet(targetType) && Settings.Rules.Any(CheckRule);
+            var result = SourceBuildingTypes.All.IsFlagSet(sourceType) && TargetBuildingTypes.All.IsFlagSet(targetType) && RuleSettings.Rules.Any(CheckRule);
 #if DEBUG
             log += $"\n\tCheck rules: result={result}; source={sourceType}; target={targetType}; length={buildingLength}; width={buildingWidth}; ";
 #endif

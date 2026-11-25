@@ -1,263 +1,79 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>net35</TargetFramework>
-		<Authors>MacSergey</Authors>
-		<Product>No Big Truck</Product>
-		<PackageProjectUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2069057130</PackageProjectUrl>
+		<AssemblyName>NoBigTruck</AssemblyName>
+		<RootNamespace>NoBigTruck</RootNamespace>
+		<Product>No Big Truck Revisited</Product>
+		<Authors>MacSergey (original), CityGecko</Authors>
+		<Copyright>MIT License - see LICENSE</Copyright>
+		<Version>2.0.0</Version>
+		<AssemblyVersion>2.0.0.0</AssemblyVersion>
+		<FileVersion>2.0.0.0</FileVersion>
 		<LangVersion>9.0</LangVersion>
-		<ManagedDLLPath>$(MSBuildProgramFiles32)/Steam/steamapps/common/Cities_Skylines/Cities_Data/Managed</ManagedDLLPath>
-		<ExternalDLLPath>$(SolutionDir)/libs</ExternalDLLPath>
-		<XmlLinqDLLPath Condition="'$(XmlLinqDLLPath)' == ''">$(MSBuildProgramFiles32)\Reference Assemblies\Microsoft\Framework\v3.5\System.Xml.Linq.dll</XmlLinqDLLPath>
-		<AssemblySearchPaths>
-			$(AssemblySearchPaths);
-			$(ManagedDLLPath);
-			$(ExternalDLLPath)
-		</AssemblySearchPaths>
-		<Configurations>Beta Debug;Beta Release;Stable Debug;Stable Release</Configurations>
+		<Configurations>Debug;Release</Configurations>
+		<Deterministic>false</Deterministic>
+		<GenerateDocumentationFile>false</GenerateDocumentationFile>
+		<!-- Override on the command line, e.g. -p:ManagedDLLPath="S:/Steam/steamapps/common/Cities_Skylines/Cities_Data/Managed" -->
+		<ManagedDLLPath Condition="'$(ManagedDLLPath)' == ''">$(MSBuildProgramFiles32)\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed</ManagedDLLPath>
+		<ModDirectory>$(LOCALAPPDATA)\Colossal Order\Cities_Skylines\Addons\Mods\NoBigTruckRevisited\</ModDirectory>
 	</PropertyGroup>
 
-	<!-- Do not ship satellite assemblies of System.Xml.Linq from a localized .NET Framework install (e.g. de\System.Xml.Linq.resources.dll). -->
-	<Target Name="DropReferenceSatellites" AfterTargets="ResolveAssemblyReferences">
-		<ItemGroup>
-			<ReferenceCopyLocalPaths Remove="@(ReferenceSatellitePaths)" />
-			<ReferenceSatellitePaths Remove="@(ReferenceSatellitePaths)" />
-		</ItemGroup>
-	</Target>
-
-	<PropertyGroup>
-		<AssemblyVersion>1.3.2.0</AssemblyVersion>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)' == 'Stable Release' OR '$(Configuration)' == 'Stable Debug'">
-		<AssemblyVersion>1.3.2.0</AssemblyVersion>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Stable Release|AnyCPU'">
-		<OutputPath>bin\$(Configuration)\</OutputPath>
+	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
 		<Optimize>true</Optimize>
-		<DebugType>pdbonly</DebugType>
-		<DefineConstants />
+		<DebugType>none</DebugType>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Stable Debug|AnyCPU'">
-		<OutputPath>bin\$(Configuration)\</OutputPath>
+	<PropertyGroup Condition="'$(Configuration)' == 'Debug'">
 		<Optimize>false</Optimize>
-		<DebugType>full</DebugType>
-		<DebugSymbols>true</DebugSymbols>
+		<DebugType>none</DebugType>
 		<DefineConstants>DEBUG</DefineConstants>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Beta Release|AnyCPU'">
-		<OutputPath>bin\$(Configuration)\</OutputPath>
-		<Optimize>true</Optimize>
-		<DebugType>pdbonly</DebugType>
-		<DefineConstants>BETA</DefineConstants>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Beta Debug|AnyCPU'">
-		<OutputPath>bin\$(Configuration)\</OutputPath>
-		<Optimize>false</Optimize>
-		<DebugType>full</DebugType>
-		<DebugSymbols>true</DebugSymbols>
-		<DefineConstants>BETA, DEBUG</DefineConstants>
-	</PropertyGroup>
-
 	<ItemGroup>
-		<PackageReference Include="CitiesHarmony.API" Version="2.0.0" />
 		<Reference Include="Assembly-CSharp">
+			<HintPath>$(ManagedDLLPath)\Assembly-CSharp.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
 		<Reference Include="ColossalManaged">
+			<HintPath>$(ManagedDLLPath)\ColossalManaged.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
 		<Reference Include="ICities">
+			<HintPath>$(ManagedDLLPath)\ICities.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
 		<Reference Include="UnityEngine">
+			<HintPath>$(ManagedDLLPath)\UnityEngine.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
-		<Reference Include="System.Xml.Linq">
-			<!-- Must be the real .NET 3.5 implementation: it is shipped with the mod. A reference assembly (e.g. from Microsoft.NETFramework.ReferenceAssemblies) has empty method bodies and crashes in game. -->
-			<HintPath>$(XmlLinqDLLPath)</HintPath>
-			<Private>true</Private>
-		</Reference>
-		<EmbeddedResource Remove="Properties\Localize.cs-CZ.resx" />
-		<EmbeddedResource Remove="Properties\Localize.da-DK.resx" />
-		<EmbeddedResource Remove="Properties\Localize.de-DE.resx" />
-		<EmbeddedResource Remove="Properties\Localize.en-GB.resx" />
-		<EmbeddedResource Remove="Properties\Localize.es-ES.resx" />
-		<EmbeddedResource Remove="Properties\Localize.fi-FI.resx" />
-		<EmbeddedResource Remove="Properties\Localize.fr-FR.resx" />
-		<EmbeddedResource Remove="Properties\Localize.hu-HU.resx" />
-		<EmbeddedResource Remove="Properties\Localize.id-ID.resx" />
-		<EmbeddedResource Remove="Properties\Localize.it-IT.resx" />
-		<EmbeddedResource Remove="Properties\Localize.ja-JP.resx" />
-		<EmbeddedResource Remove="Properties\Localize.ko-KR.resx" />
-		<EmbeddedResource Remove="Properties\Localize.nl-NL.resx" />
-		<EmbeddedResource Remove="Properties\Localize.pl-PL.resx" />
-		<EmbeddedResource Remove="Properties\Localize.pt-PT.resx" />
-		<EmbeddedResource Remove="Properties\Localize.resx" />
-		<EmbeddedResource Remove="Properties\Localize.ro-RO.resx" />
-		<EmbeddedResource Remove="Properties\Localize.ru-RU.resx" />
-		<EmbeddedResource Remove="Properties\Localize.tr-TR.resx" />
-		<EmbeddedResource Remove="Properties\Localize.zh-CN.resx" />
-		<EmbeddedResource Remove="Properties\Localize.zh-TW.resx" />
+		<Reference Include="System.Xml" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Include="Properties\Localize.cs-CZ.resx">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	  <None Include="Properties\Localize.da-DK.resx">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	  <None Include="Properties\Localize.de-DE.resx">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	  <None Include="Properties\Localize.es-ES.resx">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	  <None Include="Properties\Localize.fi-FI.resx">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	  <None Include="Properties\Localize.fr-FR.resx">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	  <None Include="Properties\Localize.hu-HU.resx">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	  <None Include="Properties\Localize.it-IT.resx">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	  <None Include="Properties\Localize.ja-JP.resx">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	  <None Include="Properties\Localize.ko-KR.resx">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	  <None Include="Properties\Localize.nl-NL.resx">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	  <None Include="Properties\Localize.pl-PL.resx">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	  <None Include="Properties\Localize.pt-PT.resx">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	  <None Include="Properties\Localize.resx">
-	    <Generator>LocalizeGenerator</Generator>
-	    <LastGenOutput>Localize.cs</LastGenOutput>
-	    <CustomToolNamespace>NoBigTruck</CustomToolNamespace>
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	  <None Include="Properties\Localize.ro-RO.resx">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	  <None Include="Properties\Localize.ru-RU.resx">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	  <None Include="Properties\Localize.tr-TR.resx">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	  <None Include="Properties\Localize.zh-CN.resx">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
+		<PackageReference Include="CitiesHarmony.API" Version="2.2.0" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Properties\Localize.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>Localize.resx</DependentUpon>
-	  </Compile>
+		<None Remove="Properties\launchSettings.json" />
+		<None Remove="Translations\**" />
 	</ItemGroup>
 
-	<Import Project="..\ModsCommon\ModShared\ModsCommonShared.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\PropertyValueShared\PropertyValueShared.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\PropertyPanelShared\PropertyPanelShared.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\UIShared\ModsUIShared.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\XmlExtension\XmlExtension.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\HeaderShared\HeaderShared.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\PluginsShared\PluginsShared.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\LocalizeShared\LocalizeShared.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\DependencyShared\DependencyShared.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\SingletonShared\SingletonShared.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\LoggerShared\LoggerShared.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\AutoLayoutPanelShared\AutoLayoutPanelShared.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\SimpleMessageBoxShared\SimpleMessageBoxShared.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\WhatsNewMessageBoxShared\WhatsNewMessageBoxShared.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\MessageBoxShared\MessageBoxShared.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\HarmonyReportShared\HarmonyReportShared.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\LoadExtensionShared\LoadExtensionShared.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\ColorsShared\ColorsShared.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\LocalizeShared\zh-CN\LocalizeShared.zh-CN.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\LocalizeShared\LocalizeManager\LocalizeManager.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\LocalizeShared\cs-CZ\LocalizeShared.cs-CZ.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\LocalizeShared\da-DK\LocalizeShared.da-DK.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\LocalizeShared\de-DE\LocalizeShared.de-DE.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\LocalizeShared\es-ES\LocalizeShared.es-ES.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\LocalizeShared\fi-FI\LocalizeShared.fi-FI.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\LocalizeShared\fr-FR\LocalizeShared.fr-FR.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\LocalizeShared\hu-HU\LocalizeShared.hu-HU.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\LocalizeShared\it-IT\LocalizeShared.it-IT.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\LocalizeShared\ja-JP\LocalizeShared.ja-JP.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\LocalizeShared\ko-KR\LocalizeShared.ko-KR.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\LocalizeShared\nl-NL\LocalizeShared.nl-NL.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\LocalizeShared\pl-PL\LocalizeShared.pl-PL.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\LocalizeShared\pt-PT\LocalizeShared.pt-PT.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\LocalizeShared\ro-RO\LocalizeShared.ro-RO.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\LocalizeShared\ru-RU\LocalizeShared.ru-RU.projitems" Label="Shared" />
-	<Import Project="..\ModsCommon\LocalizeShared\tr-TR\LocalizeShared.tr-TR.projitems" Label="Shared" />
+	<!-- AlgernonCommons (MIT, git submodule at ..\AlgernonCommons) incl. its Harmony patcher base classes. -->
+	<Import Project="..\AlgernonCommons\AlgernonCommonsPatchingShared.projitems" Label="Shared" />
 
-
-	<PropertyGroup Condition="'$(Configuration)' == 'Stable Release' OR '$(Configuration)' == 'Stable Debug'">
-		<WorkshopId>2069057130</WorkshopId>
-		<Type>Stable</Type>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)' == 'Beta Release' OR '$(Configuration)' == 'Beta Debug'">
-		<WorkshopId>2513186434</WorkshopId>
-		<Type>Beta</Type>
-	</PropertyGroup>
-
-	<PropertyGroup>
-		<LocalDir>$(LOCALAPPDATA)\Colossal Order\Cities_Skylines\Addons\Mods\$(MSBuildProjectName)$(Type)</LocalDir>
-		<WorkshopDir>C:\Program Files (x86)\Steam\steamapps\workshop\content\255710\$(WorkshopId)</WorkshopDir>
-	</PropertyGroup>
-
-
-	<Target Name="PdbToMdb" AfterTargets="Build">
+	<!-- Copy the mod to the local mods folder: DLLs, translations (own + AlgernonCommons core texts), licenses. -->
+	<Target Name="DeployToModDirectory" AfterTargets="Build">
 		<ItemGroup>
-			<FilesToDelete Include="$(OutDir)*.pdb" />
+			<ModFiles Include="$(TargetDir)*.dll" />
+			<TranslationFiles Include="$(ProjectDir)Translations\*.csv" />
+			<TranslationCoreFiles Include="$(ProjectDir)..\AlgernonCommons\Translations\*.csv" />
 		</ItemGroup>
-		<Delete Files="@(FilesToDelete)" />
-
-		<ItemGroup>
-			<LocalizeToMove Include="$(OutDir)Properties\*.resx" />
-		</ItemGroup>
-		<Move SourceFiles="@(LocalizeToMove)" DestinationFiles="@(LocalizeToMove->'$(OutDir)Localize\%(Filename)%(Extension)')" />
-		<RemoveDir Directories="$(OutDir)Properties" />
-
-		<ItemGroup>
-			<CommonLocalizeToMove Include="$(OutDir)*.resx" />
-		</ItemGroup>
-		<Move SourceFiles="@(CommonLocalizeToMove)" DestinationFiles="@(CommonLocalizeToMove->'$(OutDir)Localize\%(Filename)%(Extension)')" />
+		<RemoveDir Directories="$(ModDirectory)" />
+		<Copy SourceFiles="@(ModFiles)" DestinationFolder="$(ModDirectory)" />
+		<Copy SourceFiles="@(TranslationFiles)" DestinationFolder="$(ModDirectory)Translations" />
+		<Copy SourceFiles="@(TranslationCoreFiles)" DestinationFolder="$(ModDirectory)Translations\Core" />
+		<Copy SourceFiles="$(ProjectDir)..\LICENSE" DestinationFiles="$(ModDirectory)LICENSE.txt" />
+		<Copy SourceFiles="$(ProjectDir)..\AlgernonCommons\LICENSE.txt" DestinationFiles="$(ModDirectory)LICENSE-AlgernonCommons.txt" />
+		<Message Importance="high" Text="No Big Truck Revisited deployed to $(ModDirectory)" />
 	</Target>
-
-	<Target Name="DeployToLocal" AfterTargets="PdbToMdb">
-		<Message Text="Deploy to local $(LocalDir)" Importance="high" />
-		<RemoveDir Directories="$(LocalDir)" />
-		<ItemGroup>
-			<FilesToCopy Include="$(OutDir)\**\*.*" />
-		</ItemGroup>
-		<Copy SourceFiles="@(FilesToCopy)" DestinationFiles="@(FilesToCopy->'$(LocalDir)\%(RecursiveDir)%(Filename)%(Extension)')" />
-	</Target>
-
-	<Target Name="DeployToWorkshop" AfterTargets="PdbToMdb" Condition="'$(DeployToWorkshop)' == 'true' AND ('$(Configuration)' == 'Stable Release' OR '$(Configuration)' == 'Beta Release')">
-		<Message Text="Deploy to workshop $(WorkshopDir)" Importance="high" />
-		<RemoveDir Directories="$(WorkshopDir)" />
-		<Copy SourceFiles="@(FilesToCopy)" DestinationFiles="@(FilesToCopy->'$(WorkshopDir)\%(RecursiveDir)%(Filename)%(Extension)')" />
-		<Copy SourceFiles="$(ProjectDir)..\Workshop\PreviewImage$(Type).png" DestinationFiles="$(WorkshopDir)\PreviewImage.png" />
-	</Target>
-
 </Project>
