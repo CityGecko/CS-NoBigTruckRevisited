@@ -22,8 +22,9 @@ namespace NoBigTruck
 
         private UIScrollablePanel rulesPanel;
 
-        // Save feedback per rule, kept for the game session (also when the options page is closed and reopened).
-        private static readonly Dictionary<Rule, RuleStatus> Statuses = new Dictionary<Rule, RuleStatus>();
+        // Save feedback per rule while the page is shown; cleared when the page is left (closed or another tab chosen),
+        // so on returning the page simply shows the current, saved state.
+        private readonly Dictionary<Rule, RuleStatus> statuses = new Dictionary<Rule, RuleStatus>();
         private readonly Dictionary<Rule, UILabel> statusLabels = new Dictionary<Rule, UILabel>();
         private float statusTimer;
 
@@ -127,7 +128,7 @@ namespace NoBigTruck
                 int index = list.IndexOf(rule);
                 list.Remove(rule);
                 bool ok = RuleSettings.Set(list);
-                Statuses.Remove(rule);
+                statuses.Remove(rule);
 
                 // The following rules move up by one: tell the player which rule each one was before.
                 for (int i = Math.Max(index, 0); i < list.Count; i++)
@@ -209,7 +210,7 @@ namespace NoBigTruck
 
         private void SetStatus(Rule rule, StatusKind kind, int oldNumber, bool ok)
         {
-            Statuses[rule] = new RuleStatus { Time = DateTime.Now, Kind = kind, OldNumber = oldNumber, Ok = ok };
+            statuses[rule] = new RuleStatus { Time = DateTime.Now, Kind = kind, OldNumber = oldNumber, Ok = ok };
             UpdateStatusLabel(rule);
         }
 
@@ -219,7 +220,7 @@ namespace NoBigTruck
             if (!statusLabels.TryGetValue(rule, out UILabel label) || label == null)
                 return;
 
-            if (!Statuses.TryGetValue(rule, out RuleStatus status))
+            if (!statuses.TryGetValue(rule, out RuleStatus status))
             {
                 label.text = string.Empty;
                 return;
@@ -250,6 +251,17 @@ namespace NoBigTruck
                 default:
                     label.text = saved;
                     break;
+            }
+        }
+
+        protected override void OnVisibilityChanged()
+        {
+            base.OnVisibilityChanged();
+            if (!isVisible)
+            {
+                statuses.Clear();
+                foreach (Rule rule in new List<Rule>(statusLabels.Keys))
+                    UpdateStatusLabel(rule);
             }
         }
 
