@@ -1,5 +1,6 @@
 // MIT License, see LICENSE.
 
+using System;
 using System.Collections.Generic;
 using AlgernonCommons.Translation;
 using AlgernonCommons.UI;
@@ -20,6 +21,26 @@ namespace NoBigTruck
         private const float Column = 200f;
 
         private UIScrollablePanel rulesPanel;
+
+        // Save feedback per rule, kept for the game session (also when the options page is closed and reopened).
+        private static readonly Dictionary<Rule, RuleStatus> Statuses = new Dictionary<Rule, RuleStatus>();
+        private readonly Dictionary<Rule, UILabel> statusLabels = new Dictionary<Rule, UILabel>();
+        private float statusTimer;
+
+        private enum StatusKind
+        {
+            Saved,
+            Created,
+            Renumbered,
+        }
+
+        private struct RuleStatus
+        {
+            public DateTime Time;
+            public StatusKind Kind;
+            public int OldNumber;
+            public bool Ok;
+        }
 
         protected override void Setup()
         {
@@ -65,6 +86,7 @@ namespace NoBigTruck
                 Destroy(child.gameObject);
             }
 
+            statusLabels.Clear();
             Rule[] rules = RuleSettings.Rules;
             for (int i = 0; i < rules.Length; i++)
                 AddRuleGroup(rules[i], i + 1);
@@ -75,8 +97,10 @@ namespace NoBigTruck
             UIButton add = UIButtons.AddButton(buttonRow, 0f, 0f, Translations.Translate("ADD_RULE"), 250f);
             add.eventClicked += (c, p) =>
             {
-                var list = new List<Rule>(RuleSettings.Rules) { new Rule() };
-                RuleSettings.Set(list);
+                var rule = new Rule();
+                var list = new List<Rule>(RuleSettings.Rules) { rule };
+                bool ok = RuleSettings.Set(list);
+                SetStatus(rule, StatusKind.Created, 0, ok);
                 Populate();
             };
         }
@@ -92,13 +116,23 @@ namespace NoBigTruck
 
             float x = 10f;
             float y = 8f;
-            UILabels.AddLabel(group, x, y + 4f, string.Format(Translations.Translate("RULE_TITLE"), number), -1f, 1.0f);
+            UILabel ruleTitle = UILabels.AddLabel(group, x, y + 4f, string.Format(Translations.Translate("RULE_TITLE"), number), -1f, 1.0f);
+            UILabel status = UILabels.AddLabel(group, x + ruleTitle.width + 20f, y + 7f, string.Empty, -1f, 0.75f);
+            statusLabels[rule] = status;
+            UpdateStatusLabel(rule);
             UIButton delete = UIButtons.AddSmallerButton(group, group.width - 170f, y, Translations.Translate("DELETE_RULE"), 160f);
             delete.eventClicked += (c, p) =>
             {
                 var list = new List<Rule>(RuleSettings.Rules);
+                int index = list.IndexOf(rule);
                 list.Remove(rule);
-                RuleSettings.Set(list);
+                bool ok = RuleSettings.Set(list);
+                Statuses.Remove(rule);
+
+                // The following rules move up by one: tell the player which rule each one was before.
+                for (int i = Math.Max(index, 0); i < list.Count; i++)
+                    SetStatus(list[i], StatusKind.Renumbered, i + 2, ok);
+
                 Populate();
             };
             y += 36f;
@@ -135,40 +169,100 @@ namespace NoBigTruck
             {
                 rule.UseSize = isChecked;
                 SetSizeEnabled(length, widthField, isChecked);
-                RuleSettings.Save();
+                SaveRule(rule);
             };
             length.eventTextSubmitted += (c, text) =>
             {
                 rule.MaxLength = ReadSize(length, rule.MaxLength);
-                RuleSettings.Save();
+                SaveRule(rule);
             };
             widthField.eventTextSubmitted += (c, text) =>
             {
                 rule.MaxWidth = ReadSize(widthField, rule.MaxWidth);
-                RuleSettings.Save();
+                SaveRule(rule);
             };
         }
 
-        private static void AddSourceCheckBox(UIComponent parent, Rule rule, float x, float y, SourceBuildingTypes type, string key)
+        private void AddSourceCheckBox(UIComponent parent, Rule rule, float x, float y, SourceBuildingTypes type, string key)
         {
             UICheckBox box = UICheckBoxes.AddLabelledCheckBox(parent, x, y, Translations.Translate(key));
             box.isChecked = (rule.SourceBuildings & type) != 0;
             box.eventCheckChanged += (c, isChecked) =>
             {
                 rule.SourceBuildings = isChecked ? rule.SourceBuildings | type : rule.SourceBuildings & ~type;
-                RuleSettings.Save();
+                SaveRule(rule);
             };
         }
 
-        private static void AddTargetCheckBox(UIComponent parent, Rule rule, float x, float y, TargetBuildingTypes type, string key, string tooltipKey)
+        private void AddTargetCheckBox(UIComponent parent, Rule rule, float x, float y, TargetBuildingTypes type, string key, string tooltipKey)
         {
             UICheckBox box = UICheckBoxes.AddLabelledCheckBox(parent, x, y, Translations.Translate(key), tooltip: tooltipKey == null ? null : Translations.Translate(tooltipKey));
             box.isChecked = (rule.TargetBuildings & type) != 0;
             box.eventCheckChanged += (c, isChecked) =>
             {
                 rule.TargetBuildings = isChecked ? rule.TargetBuildings | type : rule.TargetBuildings & ~type;
-                RuleSettings.Save();
+                SaveRule(rule);
             };
+        }
+
+        private void SaveRule(Rule rule) => SetStatus(rule, StatusKind.Saved, 0, RuleSettings.Save());
+
+        private void SetStatus(Rule rule, StatusKind kind, int oldNumber, bool ok)
+        {
+            Statuses[rule] = new RuleStatus { Time = DateTime.Now, Kind = kind, OldNumber = oldNumber, Ok = ok };
+            UpdateStatusLabel(rule);
+        }
+
+        // "Saved at 21:47:03 (12 s ago)", "Created, saved at ...", "Was rule 2, saved at ..." or a red error.
+        private void UpdateStatusLabel(Rule rule)
+        {
+            if (!statusLabels.TryGetValue(rule, out UILabel label) || label == null)
+                return;
+
+            if (!Statuses.TryGetValue(rule, out RuleStatus status))
+            {
+                label.text = string.Empty;
+                return;
+            }
+
+            if (!status.Ok)
+            {
+                label.textColor = new Color32(255, 90, 90, 255);
+                label.text = Translations.Translate("STATUS_SAVE_FAILED");
+                return;
+            }
+
+            int seconds = Math.Max(0, (int)(DateTime.Now - status.Time).TotalSeconds);
+            string ago = seconds < 60
+                ? string.Format(Translations.Translate("STATUS_SECONDS_AGO"), seconds)
+                : string.Format(Translations.Translate("STATUS_MINUTES_AGO"), seconds / 60);
+            string saved = string.Format(Translations.Translate("STATUS_SAVED"), status.Time.ToString("HH:mm:ss"), ago);
+
+            label.textColor = new Color32(140, 220, 120, 255);
+            switch (status.Kind)
+            {
+                case StatusKind.Created:
+                    label.text = Translations.Translate("STATUS_CREATED") + ", " + saved;
+                    break;
+                case StatusKind.Renumbered:
+                    label.text = string.Format(Translations.Translate("STATUS_RENUMBERED"), status.OldNumber) + ", " + saved;
+                    break;
+                default:
+                    label.text = saved;
+                    break;
+            }
+        }
+
+        // Refreshes the "xx s ago" texts once per second while the options page is open.
+        public override void Update()
+        {
+            base.Update();
+            statusTimer += Time.unscaledDeltaTime;
+            if (statusTimer < 1f)
+                return;
+            statusTimer = 0f;
+            foreach (Rule rule in new List<Rule>(statusLabels.Keys))
+                UpdateStatusLabel(rule);
         }
 
         private static void SetSizeEnabled(UITextField length, UITextField widthField, bool enabled)

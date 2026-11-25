@@ -101,7 +101,8 @@ namespace NoBigTruck
             Logging.KeyMessage("rules loaded: ", rules.Length);
         }
 
-        public static void Save()
+        /// <summary>Saves the rules; returns false if the file could not be written.</summary>
+        public static bool Save()
         {
             try
             {
@@ -121,18 +122,20 @@ namespace NoBigTruck
                 }
 
                 doc.Save(ConfigFile);
+                return true;
             }
             catch (Exception e)
             {
                 Logging.LogException(e, "exception saving rule file ", ConfigFile);
+                return false;
             }
         }
 
         /// <summary>Replaces the rule list (copy-on-write for the simulation thread) and saves it.</summary>
-        public static void Set(IEnumerable<Rule> newRules)
+        public static bool Set(IEnumerable<Rule> newRules)
         {
             rules = new List<Rule>(newRules).ToArray();
-            Save();
+            return Save();
         }
 
         private static int ReadInt(XmlElement element, string name, int defaultValue) =>
