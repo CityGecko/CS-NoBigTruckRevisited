@@ -60,6 +60,16 @@ NEW = {
 }
 
 
+# Language names in their own language (AlgernonCommons reads them from the "LANGUAGE" key of the top-level files).
+LANGUAGE_NAMES = {
+    "cs-CZ": "Čeština", "da-DK": "Dansk", "de-DE": "Deutsch", "en-EN": "English", "en-GB": "English (UK)",
+    "es-ES": "Español", "fi-FI": "Suomi", "fr-FR": "Français", "hu-HU": "Magyar", "id-ID": "Bahasa Indonesia",
+    "it-IT": "Italiano", "ja-JP": "日本語", "ko-KR": "한국어", "nl-NL": "Nederlands", "pl-PL": "Polski",
+    "pt-PT": "Português", "ro-RO": "Română", "ru-RU": "Русский", "tr-TR": "Türkçe", "zh-CN": "简体中文",
+    "zh-TW": "繁體中文",
+}
+
+
 def read_resx(path):
     values = {}
     for data in ET.parse(path).getroot().iter("data"):
@@ -85,6 +95,7 @@ def main():
             continue
         out = os.path.join(DST, code + ".csv")
         with open(out, "w", encoding="utf-8-sig", newline="\r\n") as f:
+            f.write(quote("LANGUAGE") + "," + quote(LANGUAGE_NAMES.get(code, code)) + "\n")
             for key in list(KEYS.values()) + list(NEW["en-EN"].keys()):
                 if key in values:
                     f.write(quote(key) + "," + quote(values[key]) + "\n")
