@@ -1,0 +1,30 @@
+﻿OK      VehicleManager.GetRandomVehicleInfo : public VehicleInfo GetRandomVehicleInfo(ref Randomizer r, ItemClass.Service service, ItemClass.SubService subService, ItemClass.Level level)
+OK      VehicleManager.GetTransferIndex : private static int GetTransferIndex(ItemClass.Service service, ItemClass.SubService subService, ItemClass.Level level)
+OK      VehicleManager.m_transferVehicles : private FastList<ushort>[] m_transferVehicles;
+OK      VehicleManager.RefreshTransferVehicles : public void RefreshTransferVehicles()
+OK      WarehouseAI.GetTransferVehicleService : public static VehicleInfo GetTransferVehicleService(TransferManager.TransferReason material, ItemClass.Level level, ref Randomizer randomizer)
+OK      TransferManager.TransferOffer.Building : public ushort Building
+OK      Vehicle.m_transferType : public byte m_transferType;
+OK      Building.Info : public BuildingInfo Info
+OK      BuildingManager.m_buildings : public Array16<Building> m_buildings;
+OK      BuildingInfo.m_cellLength : public int m_cellLength;
+OK      BuildingInfo.m_cellWidth : public int m_cellWidth;
+OK      BuildingInfo.m_class : public ItemClass m_class;
+OK      ItemClass.m_service : public Service m_service;
+OK      ItemClass.m_subService : public SubService m_subService;
+OK      VehicleInfo.m_isLargeVehicle : public bool m_isLargeVehicle;
+OK      Enum ItemClass.Service: Road = 9
+OK      Enum ItemClass.Service: PublicTransport = 19
+OK      Enum ItemClass.Service: PlayerIndustry = 21
+OK      Enum ItemClass.Service: Industrial = 3
+OK      Enum ItemClass.Service: Disaster = 20
+OK      Enum ItemClass.SubService: CommercialLow = 3
+OK      Enum ItemClass.SubService: CommercialHigh = 4
+OK      Enum ItemClass.SubService: CommercialEco = 24
+OK      Enum ItemClass.SubService: CommercialLeisure = 18
+OK      Enum ItemClass.SubService: CommercialTourist = 19
+OK      Enum ItemClass.SubService: CommercialWallToWall = 39
+OK      Enum TransferManager.TransferReason: Goods = 17
+OK      AVO UIOptionPanel.m_isLargeVehicle : private UICheckBox m_isLargeVehicle;
+OK      AVO UIOptionPanel.OnCheckChanged : protected void OnCheckChanged(UIComponent component, bool state)
+OK      AVO NoBigTruckCompatibilityPatch.IsNBTActive : public static bool IsNBTActive()

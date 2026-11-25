@@ -1,0 +1,53 @@
+﻿ZUSAMMENFASSUNG
+---------------
+Alt : Spielversion       : 1.21.1-f9  (Release-Typ ReleaseType.Final)
+Neu : Spielversion       : 1.21.2-f5  (Release-Typ ReleaseType.Final)
+FEHLT/PRUEFEN im neuen Stand: 0
+Hinweise im neuen Stand: 0
+Geaenderte Zeilen bei Abhaengigkeiten: 0, bei Harmony-Zielen: 0
+Enum-Aenderungen bei Service/SubService/Level/TransferReason/Bezirks-Spezialisierung: 0
+Geaenderte Dateien: src 1, il 6
+
+Reihenfolge fuer die Pruefung: 1) FEHLT/PRUEFEN (Mod bricht oder Transpiler ersetzt still nichts)
+2) geaenderte IL der Harmony-Ziele (il_changes.patch: Argument-/Lokal-Indizes)  3) neue Gewerbe-SubServices/TransferReasons/Bezirks-Spezialisierungen (z. B. Wall-to-Wall)
+4) danach im Spiel: output_log.txt auf "[NoBigTruck] ... Success patched!" und "Patch Success" pruefen
+
+=== Spielversion / DLL-Hashes (00_info.txt) ===
+- Spielversion       : 1.21.1-f9  (Release-Typ ReleaseType.Final)
+- Assembly-CSharp.dll   : 6674432 Bytes, 2026-05-01, SHA256 DF557994A03C93D8BB4A14F80B1FBCC0FB29D547658442445D078D069BCDD9FE
+- ColossalManaged.dll   : 816640 Bytes, 2026-05-01, SHA256 34701F61DEF31F5F9DF79D573CE19E0BC52575879BCC395D51B39F6D746A58B9
+- ICities.dll           : 33280 Bytes, 2026-03-10, SHA256 466586ADB50DCC2E1382D9F7683FA50FEBA82A376D736FB65F1C34A53D0B9C90
++ Spielversion       : 1.21.2-f5  (Release-Typ ReleaseType.Final)
++ Assembly-CSharp.dll   : 6685696 Bytes, 2026-11-24, SHA256 EA319CA84D96EA004FC413762370AE32F08279ED9EE6B164BE97016B05265FAD
++ ColossalManaged.dll   : 821248 Bytes, 2026-11-24, SHA256 661D8401E0B4C6BBEF6C414E5F78B0A18D6F8A2A719B81A0F19181802A9D4AC7
++ ICities.dll           : 33280 Bytes, 2026-11-24, SHA256 D08C742ECA81FEEB45607C5FB80258A7560251349D37331EFA92CD9DE5300A18
+(4 Zeilen entfernt/geaendert, 4 Zeilen neu/geaendert)
+
+=== Enums und Konstanten (02_enums_consts.txt) ===
+- CONST BuildConfig.APPLICATION_VERSION_C = 1
+- CONST BuildConfig.APPLICATION_BUILD_NUMBER = 9
++ CONST BuildConfig.APPLICATION_VERSION_C = 2
++ CONST BuildConfig.APPLICATION_BUILD_NUMBER = 5
+(2 Zeilen entfernt/geaendert, 2 Zeilen neu/geaendert)
+
+=== Member-Signaturen (03_signatures.txt) ===
+Keine Unterschiede.
+
+=== NBT-Abhaengigkeiten (04_nbt_dependencies.txt) ===
+Keine Unterschiede.
+
+=== Harmony-Ziele im IL (05_patch_targets.txt) ===
+Keine Unterschiede.
+
+=== Dekompilierter Quelltext (src) ===
+~ geaendert: BuildConfig.cs.txt
+Vollstaendiger Diff: %USERPROFILE%\Documents\Programmierung\NoBigTruck-1.21\GameBaseline\1.21.2-f5_2026-11-24\scan\src_changes.patch
+
+=== IL der gepatchten Methoden (il) ===
+~ geaendert: CargoTruckAI.ChangeVehicleType.il.txt
+~ geaendert: IndustrialBuildingAI.StartTransfer.il.txt
+~ geaendert: IndustrialExtractorAI.StartTransfer.il.txt
+~ geaendert: OutsideConnectionAI.StartConnectionTransferImpl.il.txt
+~ geaendert: VehicleManager.RefreshTransferVehicles.il.txt
+~ geaendert: WarehouseAI.StartTransfer.il.txt
+Vollstaendiger Diff: %USERPROFILE%\Documents\Programmierung\NoBigTruck-1.21\GameBaseline\1.21.2-f5_2026-11-24\scan\il_changes.patch

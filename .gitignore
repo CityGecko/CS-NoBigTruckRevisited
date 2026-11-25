@@ -348,3 +348,9 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# GameScan: Spiel-DLLs und dekompilierter Spielcode bleiben lokal (Rechte bei Colossal Order/Paradox)
+GameBaseline/*/dll/
+GameBaseline/*/scan/src/
+GameBaseline/*/scan/il/
+GameBaseline/*/scan/*_changes.patch

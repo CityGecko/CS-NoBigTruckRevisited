@@ -1,0 +1,1122 @@
+﻿[Building] public bool CalculateGroupData(ushort buildingID, int layer, ref int vertexCount, ref int triangleCount, ref int objectCount, ref RenderGroup.VertexArrays vertexArrays)
+[Building] public bool CheckZoning(ItemClass.Zone zone1, ItemClass.Zone zone2, bool allowCollapsed)
+[Building] public bool ContainsBuilding(ushort building)
+[Building] public bool ContainsNode(ushort node)
+[Building] public bool ContainsSegment(ushort segment)
+[Building] public bool IsGuestVehicle(ushort vehicleID)
+[Building] public bool IsOwnVehicle(ushort vehicleID)
+[Building] public bool OverlapQuad(ushort buildingID, Quad2 quad, float minY, float maxY, ItemClass.CollisionType collisionType)
+[Building] public bool RayCast(ushort buildingID, Segment3 ray, out float t)
+[Building] public BuildingInfo Info
+[Building] public byte m_adults;
+[Building] public byte m_allUnemployed;
+[Building] public byte m_baseHeight;
+[Building] public byte m_childHealth;
+[Building] public byte m_children;
+[Building] public byte m_citizenCount;
+[Building] public byte m_constructState;
+[Building] public byte m_deathProblemTimer;
+[Building] public byte m_educated0Unemployed;
+[Building] public byte m_educated1Unemployed;
+[Building] public byte m_educated2Unemployed;
+[Building] public byte m_educated3Unemployed;
+[Building] public byte m_education1;
+[Building] public byte m_education2;
+[Building] public byte m_education3;
+[Building] public byte m_electricityProblemTimer;
+[Building] public byte m_finalExport;
+[Building] public byte m_finalImport;
+[Building] public byte m_fireDamage;
+[Building] public byte m_fireHazard;
+[Building] public byte m_fireIntensity;
+[Building] public byte m_happiness;
+[Building] public byte m_health;
+[Building] public byte m_healthProblemTimer;
+[Building] public byte m_heatingProblemTimer;
+[Building] public byte m_incomingProblemTimer;
+[Building] public byte m_lastFrame;
+[Building] public byte m_length;
+[Building] public byte m_level;
+[Building] public byte m_levelUpProgress;
+[Building] public byte m_majorProblemTimer;
+[Building] public byte m_outgoingProblemTimer;
+[Building] public byte m_park;
+[Building] public byte m_productionRate;
+[Building] public byte m_productionState;
+[Building] public byte m_seniorHealth;
+[Building] public byte m_seniors;
+[Building] public byte m_serviceProblemTimer;
+[Building] public byte m_taxProblemTimer;
+[Building] public byte m_teens;
+[Building] public byte m_tempExport;
+[Building] public byte m_tempImport;
+[Building] public byte m_waterPollution;
+[Building] public byte m_waterProblemTimer;
+[Building] public byte m_width;
+[Building] public byte m_workerProblemTimer;
+[Building] public byte m_youngs;
+[Building] public enum Flags
+[Building] public enum Flags2
+[Building] public Flags m_flags;
+[Building] public Flags2 m_flags2;
+[Building] public float m_angle;
+[Building] public float SampleWalkingHeight(ushort buildingID, Vector3 worldPos, float terrainHeight)
+[Building] public Frame GetFrameData(uint simulationFrame)
+[Building] public Frame GetLastFrameData()
+[Building] public Frame m_frame0;
+[Building] public Frame m_frame1;
+[Building] public Frame m_frame2;
+[Building] public Frame m_frame3;
+[Building] public int Length
+[Building] public int m_cashBuffer;
+[Building] public int Width
+[Building] public Notification.ProblemStruct m_problems;
+[Building] public RaceTeamInfo RaceTeamInfo
+[Building] public static float CalculateLocalMeshOffset(BuildingInfo info, int length)
+[Building] public static Quaternion CalculateMeshRotation(float angle)
+[Building] public static ushort FindParentBuilding(ushort buildingID)
+[Building] public static Vector3 CalculateMeshPosition(BuildingInfo info, Vector3 position, float angle, int length)
+[Building] public static Vector3 CalculatePosition(Vector3 position, float angle, Vector3 offset)
+[Building] public static Vector3 CalculateSidewalkPosition(Vector3 position, float angle, int length)
+[Building] public static Vector3 CalculateSidewalkPosition(Vector3 position, float angle, int length, float xOffset, float zOffset)
+[Building] public static void RenderLod(RenderManager.CameraInfo cameraInfo, BuildingInfoBase info)
+[Building] public static void SampleBuildingHeight(Vector3 worldPos, float angle, int width, int length, BuildingInfo info, out float minY, out float maxY, out float buildingY)
+[Building] public static void SampleBuildingHeight(Vector3 worldPos, float angle, int width, int length, BuildingInfo info, out float minY, out float maxY, out float buildingY, ref float buildWaterHeight)
+[Building] public static void TerrainUpdated(BuildingInfo info, ushort buildingID, Vector3 position, float angle, int width, int length, float minX, float minZ, float maxX, float maxZ, bool collapsed)
+[Building] public struct Frame
+[Building] public uint FindAccessLane(NetInfo.LaneType laneTypes, VehicleInfo.VehicleType vehicleTypes, VehicleInfo.VehicleCategory vehicleCategories, Vector3 point, out Vector3 position, out float laneOffset)
+[Building] public uint FindCitizenUnit(CitizenUnit.Flags flag, uint citizen)
+[Building] public uint FindLane(NetInfo.LaneType laneTypes, VehicleInfo.VehicleType vehicleTypes, VehicleInfo.VehicleCategory vehicleCategories, Vector3 point, out Vector3 position, out float laneOffset)
+[Building] public uint GetEmptyCitizenUnit(CitizenUnit.Flags flag)
+[Building] public uint GetNotFullCitizenUnit(CitizenUnit.Flags flag)
+[Building] public uint m_buildIndex;
+[Building] public uint m_cargoTrafficRate;
+[Building] public uint m_citizenUnits;
+[Building] public uint m_garbageTrafficRate;
+[Building] public ushort FindNode(ItemClass.Service service, ItemClass.SubService subService, ItemClass.Layer itemLayers, Vector3 position)
+[Building] public ushort FindParentNode(ushort buildingID)
+[Building] public ushort FindSegment(ItemClass.Service service, ItemClass.SubService subService, ItemClass.Layer itemLayers)
+[Building] public ushort m_accessSegment;
+[Building] public ushort m_buildWaterHeight;
+[Building] public ushort m_crimeBuffer;
+[Building] public ushort m_customBuffer1;
+[Building] public ushort m_customBuffer2;
+[Building] public ushort m_electricityBuffer;
+[Building] public ushort m_eventAccessSegment;
+[Building] public ushort m_eventIndex;
+[Building] public ushort m_eventRouteIndex;
+[Building] public ushort m_garbageBuffer;
+[Building] public ushort m_guestVehicles;
+[Building] public ushort m_heatingBuffer;
+[Building] public ushort m_infoIndex;
+[Building] public ushort m_mailBuffer;
+[Building] public ushort m_netNode;
+[Building] public ushort m_nextGridBuilding;
+[Building] public ushort m_nextGridBuilding2;
+[Building] public ushort m_ownVehicles;
+[Building] public ushort m_parentBuilding;
+[Building] public ushort m_raceSpectators
+[Building] public ushort m_raceTeamIndex;
+[Building] public ushort m_roomBecomeUsed;
+[Building] public ushort m_roomBecomeVacant;
+[Building] public ushort m_roomCost;
+[Building] public ushort m_roomCostTarget;
+[Building] public ushort m_roomLeftToUse;
+[Building] public ushort m_roomMax;
+[Building] public ushort m_roomUsed;
+[Building] public ushort m_sewageBuffer;
+[Building] public ushort m_sourceCitizens;
+[Building] public ushort m_subBuilding;
+[Building] public ushort m_targetCitizens;
+[Building] public ushort m_waterBuffer;
+[Building] public ushort m_waterSource;
+[Building] public Vector3 CalculateAccessPosition(float xOffset = 0f, float zOffset = 0f)
+[Building] public Vector3 CalculateMeshPosition()
+[Building] public Vector3 CalculatePosition(Vector3 offset)
+[Building] public Vector3 CalculateSidewalkPosition()
+[Building] public Vector3 CalculateSidewalkPosition(float xOffset, float zOffset)
+[Building] public Vector3 m_position;
+[Building] public void AddGuestVehicle(ushort vehicleID, ref Vehicle data)
+[Building] public void AddOwnVehicle(ushort vehicleID, ref Vehicle data)
+[Building] public void AddSourceCitizen(ushort instanceID, ref CitizenInstance data)
+[Building] public void AddTargetCitizen(ushort instanceID, ref CitizenInstance data)
+[Building] public void AfterTerrainUpdated(ushort buildingID, float minX, float minZ, float maxX, float maxZ)
+[Building] public void CalculateBuilding(ushort buildingID)
+[Building] public void CalculateMeshPosition(out Vector3 meshPosition, out Quaternion meshRotation)
+[Building] public void GetInfoWidthLength(out BuildingInfo info, out int width, out int length)
+[Building] public void GetTotalPosition(out Vector3 position, out Quaternion rotation, out Vector3 size)
+[Building] public void PlayAudio(AudioManager.ListenerInfo listenerInfo, ushort buildingID)
+[Building] public void PopulateGroupData(ushort buildingID, int groupX, int groupZ, int layer, ref int vertexIndex, ref int triangleIndex, Vector3 groupPosition, RenderGroup.MeshData data, ref Vector3 min, ref Vector3 max, ref float maxRenderDistance, ref float maxInstanceDistance)
+[Building] public void RemoveGuestVehicle(ushort vehicleID, ref Vehicle data)
+[Building] public void RemoveOwnVehicle(ushort vehicleID, ref Vehicle data)
+[Building] public void RemoveSourceCitizen(ushort instanceID, ref CitizenInstance data)
+[Building] public void RemoveTargetCitizen(ushort instanceID, ref CitizenInstance data)
+[Building] public void RenderInstance(RenderManager.CameraInfo cameraInfo, ushort buildingID, int layerMask)
+[Building] public void SetFrameData(uint simulationFrame, Frame data)
+[Building] public void SetLastFrameData(Frame data)
+[Building] public void TerrainUpdated(ushort buildingID, float minX, float minZ, float maxX, float maxZ)
+[Building] public void UpdateBuilding(ushort buildingID)
+[Building] public void UpdateTerrain(bool heights, bool surface)
+[BuildingInfo] protected override void LateUpdate()
+[BuildingInfo] protected void RenderInstance(Matrix4x4 transform)
+[BuildingInfo] public AudioInfo m_customLoopSound;
+[BuildingInfo] public bool IgnoreBuildingCollision()
+[BuildingInfo] public bool m_alreadyUnlocked;
+[BuildingInfo] public bool m_anyMeshRequireWaterMap;
+[BuildingInfo] public bool m_AssetEditorPillarTemplate;
+[BuildingInfo] public bool m_AssetEditorTemplate = true;
+[BuildingInfo] public bool m_autoRemove;
+[BuildingInfo] public bool m_circular;
+[BuildingInfo] public bool m_clipTerrain;
+[BuildingInfo] public bool m_colorizeEverything;
+[BuildingInfo] public bool m_dontSpawnNormally;
+[BuildingInfo] public bool m_elevated;
+[BuildingInfo] public bool m_expandFrontYard;
+[BuildingInfo] public bool m_fixedHeight;
+[BuildingInfo] public bool m_flattenFullArea;
+[BuildingInfo] public bool m_flattenTerrain = true;
+[BuildingInfo] public bool m_followTerrain;
+[BuildingInfo] public bool m_fullGravel;
+[BuildingInfo] public bool m_fullPavement;
+[BuildingInfo] public bool m_hasPedestrianPaths;
+[BuildingInfo] public bool m_ignoreSlopeTooSteep;
+[BuildingInfo] public bool m_instanceDirty;
+[BuildingInfo] public bool m_invertSegments;
+[BuildingInfo] public bool m_isInvertible;
+[BuildingInfo] public bool m_isTreasure;
+[BuildingInfo] public bool m_isUpgradeable;
+[BuildingInfo] public bool m_keepElevation;
+[BuildingInfo] public bool m_lightsOnTerrain;
+[BuildingInfo] public bool m_lodMissing;
+[BuildingInfo] public bool m_randomEffectTiming;
+[BuildingInfo] public bool m_useColorVariations = true;
+[BuildingInfo] public bool m_weakTerrainRuining;
+[BuildingInfo] public bool[] m_forbidLaneConnection;
+[BuildingInfo] public bool[] m_yieldSigns;
+[BuildingInfo] public Building.Flags m_flagsForbidden;
+[BuildingInfo] public Building.Flags m_flagsRequired;
+[BuildingInfo] public Building.Flags2 m_flagsForbidden2;
+[BuildingInfo] public Building.Flags2 m_flagsRequired2;
+[BuildingInfo] public BuildingAI m_buildingAI;
+[BuildingInfo] public BuildingInfo m_buildingInfo;
+[BuildingInfo] public BuildingInfoBase m_subInfo;
+[BuildingInfo] public BuildingInfoSub m_collapsedInfo;
+[BuildingInfo] public BuildingTypeGuide m_notUsedGuide;
+[BuildingInfo] public class MeshInfo
+[BuildingInfo] public class PathInfo
+[BuildingInfo] public class Prop
+[BuildingInfo] public class SubInfo
+[BuildingInfo] public Color m_color0;
+[BuildingInfo] public Color m_color1;
+[BuildingInfo] public Color m_color2;
+[BuildingInfo] public Color m_color3;
+[BuildingInfo] public const int LengthCount = 4;
+[BuildingInfo] public const int WidthCount = 4;
+[BuildingInfo] public enum PlacementMode
+[BuildingInfo] public enum TrafficLights
+[BuildingInfo] public enum ZoningMode
+[BuildingInfo] public float m_angle;
+[BuildingInfo] public float m_collisionHeight;
+[BuildingInfo] public float m_maxHeightOffset;
+[BuildingInfo] public float m_maxPedestrianHeight;
+[BuildingInfo] public float m_maxPropDistance;
+[BuildingInfo] public float m_maxSnapDistance = 0.1f;
+[BuildingInfo] public float m_placementOffset;
+[BuildingInfo] public float m_radAngle;
+[BuildingInfo] public float m_renderSize;
+[BuildingInfo] public int m_cellLength;
+[BuildingInfo] public int m_cellWidth;
+[BuildingInfo] public int m_collapsedRotations;
+[BuildingInfo] public int m_index;
+[BuildingInfo] public int m_probability = 100;
+[BuildingInfo] public int m_requiredLength;
+[BuildingInfo] public int m_treeLayers;
+[BuildingInfo] public ItemClass m_class;
+[BuildingInfo] public ItemClass.Availability m_availableIn = ItemClass.Availability.All;
+[BuildingInfo] public ItemClass.Placement m_placementStyle;
+[BuildingInfo] public Matrix4x4 m_matrix;
+[BuildingInfo] public MeshInfo()
+[BuildingInfo] public MeshInfo(MeshInfo other)
+[BuildingInfo] public MeshInfo[] m_subMeshes;
+[BuildingInfo] public MilestoneInfo m_UnlockMilestone;
+[BuildingInfo] public NetInfo m_finalNetInfo;
+[BuildingInfo] public NetInfo m_netInfo;
+[BuildingInfo] public override bool CanBeBuilt()
+[BuildingInfo] public override GeneratedString GetGeneratedTitle()
+[BuildingInfo] public override int GetConstructionCost()
+[BuildingInfo] public override int GetLength()
+[BuildingInfo] public override int GetMaintenanceCost()
+[BuildingInfo] public override int GetWidth()
+[BuildingInfo] public override ItemClass.Level GetClassLevel()
+[BuildingInfo] public override ItemClass.Service GetService()
+[BuildingInfo] public override ItemClass.SubService GetSubService()
+[BuildingInfo] public override MilestoneInfo GetUnlockMilestone()
+[BuildingInfo] public override PrefabAI GetAI()
+[BuildingInfo] public override string GetLocalizedDescription()
+[BuildingInfo] public override string GetLocalizedDescriptionShort()
+[BuildingInfo] public override string GetLocalizedTitle()
+[BuildingInfo] public override string GetUncheckedLocalizedTitle()
+[BuildingInfo] public override void CheckReferences()
+[BuildingInfo] public override void DestroyPrefab()
+[BuildingInfo] public override void DestroyPrefabInstance()
+[BuildingInfo] public override void EditorInstantiateProperties(bool recalcInfo = true)
+[BuildingInfo] public override void EnsureCellSurface()
+[BuildingInfo] public override void GetDecorationArea(out int width, out int length, out float offset)
+[BuildingInfo] public override void GetDecorationDirections(out bool negX, out bool posX, out bool negZ, out bool posZ)
+[BuildingInfo] public override void GetLengthRange(out int minLength, out int maxLength)
+[BuildingInfo] public override void GetWidthRange(out int minWidth, out int maxWidth)
+[BuildingInfo] public override void InitializePrefab()
+[BuildingInfo] public override void InitializePrefabInstance(PrefabInfo prefabInfo)
+[BuildingInfo] public override void InitMeshData(Rect atlasRect, Texture2D rgbAtlas, Texture2D xysAtlas, Texture2D aciAtlas)
+[BuildingInfo] public override void LoadDecorations()
+[BuildingInfo] public override void ReadMesh(out Vector3[] vertices, out int[] triangles)
+[BuildingInfo] public override void RefreshLevelOfDetail()
+[BuildingInfo] public override void RenderMesh(RenderManager.CameraInfo cameraInfo)
+[BuildingInfo] public override void SaveDecorations()
+[BuildingInfo] public override void SetCellSurface(int index, TerrainModify.Surface surface)
+[BuildingInfo] public override void SetLength(int length)
+[BuildingInfo] public override void SetWidth(int width)
+[BuildingInfo] public override void TempInitializePrefab()
+[BuildingInfo] public override void TerrainUpdated(TerrainArea heightArea, TerrainArea surfaceArea, TerrainArea zoneArea)
+[BuildingInfo] public PathInfo()
+[BuildingInfo] public PathInfo(PathInfo other)
+[BuildingInfo] public PathInfo[] m_paths;
+[BuildingInfo] public PlacementMode m_placementMode;
+[BuildingInfo] public Prop()
+[BuildingInfo] public Prop(Prop other)
+[BuildingInfo] public Prop[] m_animalPlaces;
+[BuildingInfo] public Prop[] m_enterDoors;
+[BuildingInfo] public Prop[] m_exitDoors;
+[BuildingInfo] public Prop[] m_props;
+[BuildingInfo] public Prop[] m_specialPlaces;
+[BuildingInfo] public Prop[] m_viewpointPlaces;
+[BuildingInfo] public PropInfo m_finalProp;
+[BuildingInfo] public PropInfo m_prop;
+[BuildingInfo] public PropInfo.DoorType m_doorMask;
+[BuildingInfo] public SavedBool m_unlocked;
+[BuildingInfo] public static bool m_renderFloors;
+[BuildingInfo] public static bool s_filterSubMeshes = false;
+[BuildingInfo] public static bool s_renderBaseOverlay = true;
+[BuildingInfo] public static bool s_renderGroundOverlay = true;
+[BuildingInfo] public static bool s_renderPathOverlay = true;
+[BuildingInfo] public static Building.Flags s_previewBuildingFlags = Building.Flags.None;
+[BuildingInfo] public static Building.Flags2 s_previewBuildingFlags2 = Building.Flags2.None;
+[BuildingInfo] public SubInfo()
+[BuildingInfo] public SubInfo(SubInfo other)
+[BuildingInfo] public SubInfo[] m_subBuildings;
+[BuildingInfo] public TerrainModify.Surface[] m_cellSurfaces;
+[BuildingInfo] public TrafficLights[] m_trafficLights;
+[BuildingInfo] public TreeInfo m_finalTree;
+[BuildingInfo] public TreeInfo m_tree;
+[BuildingInfo] public Vector2[] m_pavementAreas;
+[BuildingInfo] public Vector3 m_centerOffset;
+[BuildingInfo] public Vector3 m_position;
+[BuildingInfo] public Vector3 m_size;
+[BuildingInfo] public Vector3[] m_curveTargets;
+[BuildingInfo] public Vector3[] m_nodes;
+[BuildingInfo] public VehicleInfo.VehicleType m_hasParkingSpaces;
+[BuildingInfo] public virtual string GetLocalizedDescriptionShortWithEnviroment()
+[BuildingInfo] public void EditorInstantiateProperties()
+[BuildingInfo] public void SetRenderParameters(ushort buildingID, Vector3 position, Quaternion rotation, Vector4 buildingState, Vector4 objectIndex, float active, int state, bool playActiveState, Color color1, Color color2)
+[BuildingInfo] public void SetRenderParameters(Vector3 position, Quaternion rotation, Vector4 buildingState, Vector4 objectIndex, int state, Color color)
+[BuildingInfo] public ZoningMode m_zoningMode;
+[BuildingManager] protected override void Awake()
+[BuildingManager] protected override void BeginOverlayImpl(RenderManager.CameraInfo cameraInfo)
+[BuildingManager] protected override void BeginRenderingImpl(RenderManager.CameraInfo cameraInfo)
+[BuildingManager] protected override void EndRenderingImpl(RenderManager.CameraInfo cameraInfo)
+[BuildingManager] protected override void PlayAudioImpl(AudioManager.ListenerInfo listenerInfo)
+[BuildingManager] protected override void SimulationStepImpl(int subStep)
+[BuildingManager] public Array16<Building> m_buildings;
+[BuildingManager] public AudioGroup m_audioGroup;
+[BuildingManager] public bool CheckLimits()
+[BuildingManager] public bool CreateBuilding(out ushort building, ref Randomizer randomizer, BuildingInfo info, Vector3 position, float angle, int length, uint buildIndex)
+[BuildingManager] public bool HasBeenBuilt(ItemClass.Service service, EventManager.EventType eventTypes, EventManager.EventGroup eventGroups)
+[BuildingManager] public bool HasBeenBuilt(ItemClass.Service service, Type aiType)
+[BuildingManager] public bool m_abandonmentDisabled;
+[BuildingManager] public bool m_buildingsUpdated;
+[BuildingManager] public bool m_firesDisabled;
+[BuildingManager] public bool OverlapQuad(Quad2 quad, float minY, float maxY, ItemClass.CollisionType collisionType, ItemClass.Layer layers, ushort ignoreBuilding, ushort ignoreNode1, ushort ignoreNode2)
+[BuildingManager] public bool OverlapQuad(Quad2 quad, float minY, float maxY, ItemClass.CollisionType collisionType, ItemClass.Layer layers, ushort ignoreBuilding, ushort ignoreNode1, ushort ignoreNode2, ulong[] buildingMask)
+[BuildingManager] public bool RayCast(Segment3 ray, ItemClass.Service service, ItemClass.SubService subService, ItemClass.Layer itemLayers, Building.Flags ignoreFlags, out Vector3 hit, out ushort buildingIndex)
+[BuildingManager] public bool TryGetAdditionalSelectedServiceBuildingVehicle(ushort buildingID, out int prefabIndex)
+[BuildingManager] public bool TryGetSelectedServiceBuildingVehicle(ushort buildingID, out int prefabIndex)
+[BuildingManager] public bool UpdateColorMap(Texture2D colorMap)
+[BuildingManager] public bool UpgradeBuilding(ushort buildingID)
+[BuildingManager] public bool UpgradeBuilding(ushort buildingID, bool useConstructionCost)
+[BuildingManager] public BuildingCommonCollection m_common;
+[BuildingManager] public BuildingInfo GetRandomBuildingInfo(ref Randomizer r, ItemClass.Service service, ItemClass.SubService subService, ItemClass.Level level, int width, int length, BuildingInfo.ZoningMode zoningMode, int style)
+[BuildingManager] public BuildingInstanceGuide m_administrationBuildingPlaced;
+[BuildingManager] public BuildingInstanceGuide m_buildingAbandoned1;
+[BuildingManager] public BuildingInstanceGuide m_buildingAbandoned2;
+[BuildingManager] public BuildingInstanceGuide m_buildingBurned;
+[BuildingManager] public BuildingInstanceGuide m_buildingDestroyed;
+[BuildingManager] public BuildingInstanceGuide m_buildingDestroyed2;
+[BuildingManager] public BuildingInstanceGuide m_buildingFlooded;
+[BuildingManager] public BuildingInstanceGuide m_buildingFlooded2;
+[BuildingManager] public BuildingInstanceGuide m_buildingLevelUp;
+[BuildingManager] public BuildingInstanceGuide m_buildingNoEventAccess;
+[BuildingManager] public BuildingInstanceGuide m_cemeteryEmpty;
+[BuildingManager] public BuildingInstanceGuide m_cemeteryFull;
+[BuildingManager] public BuildingInstanceGuide m_citizensInShelter;
+[BuildingManager] public BuildingInstanceGuide m_depotNotConnected;
+[BuildingManager] public BuildingInstanceGuide m_escapeRoutes;
+[BuildingManager] public BuildingInstanceGuide m_eventNotScheduled;
+[BuildingManager] public BuildingInstanceGuide m_fishFactoryMarketBuilt;
+[BuildingManager] public BuildingInstanceGuide m_fishingPollutionDetected;
+[BuildingManager] public BuildingInstanceGuide m_helicopterStopBuilt;
+[BuildingManager] public BuildingInstanceGuide m_historicalBuilding;
+[BuildingManager] public BuildingInstanceGuide m_hotelEvents;
+[BuildingManager] public BuildingInstanceGuide m_industryBuildingOutsideIndustryArea;
+[BuildingManager] public BuildingInstanceGuide m_intercityBusStationBuilt;
+[BuildingManager] public BuildingInstanceGuide m_landfillSiteEmpty;
+[BuildingManager] public BuildingInstanceGuide m_landfillSiteFull;
+[BuildingManager] public BuildingInstanceGuide m_parkBuildingInsideParkArea;
+[BuildingManager] public BuildingInstanceGuide m_parkBuildingOutsideParkArea;
+[BuildingManager] public BuildingInstanceGuide m_parkGatePlaced;
+[BuildingManager] public BuildingInstanceGuide m_raceEndBuildingMissing;
+[BuildingManager] public BuildingInstanceGuide m_rocketLaunchSite;
+[BuildingManager] public BuildingInstanceGuide m_snowDumpFull;
+[BuildingManager] public BuildingInstanceGuide m_stockExchangeNotUpgraded;
+[BuildingManager] public BuildingInstanceGuide m_trolleybusDepotBuilt;
+[BuildingManager] public BuildingInstanceGuide m_vsArenaBuilt;
+[BuildingManager] public BuildingInstanceGuide m_warehouseNeeded;
+[BuildingManager] public BuildingInstanceGuide m_wasteTransferFacilityFull;
+[BuildingManager] public BuildingInstanceGuide m_waterOutletOnLand;
+[BuildingManager] public BuildingOnFireGuide m_buildingOnFire;
+[BuildingManager] public BuildingTypeGuide m_bankNotUsed;
+[BuildingManager] public BuildingTypeGuide m_childCareNotUsed;
+[BuildingManager] public BuildingTypeGuide m_elderCareNotUsed;
+[BuildingManager] public BuildingTypeGuide m_fishingHarborBuilt;
+[BuildingManager] public BuildingTypeGuide m_fishingHarborNotUsed;
+[BuildingManager] public BuildingTypeGuide m_fishTypes;
+[BuildingManager] public BuildingTypeGuide m_helicopterDepotNotUsed;
+[BuildingManager] public BuildingTypeGuide m_hotelManagement;
+[BuildingManager] public BuildingTypeGuide m_hotelNotUsed;
+[BuildingManager] public BuildingTypeGuide m_inlandWaterTreatmentNotUsed;
+[BuildingManager] public BuildingTypeGuide m_internationalTradeBuildingNotUsed;
+[BuildingManager] public BuildingTypeGuide m_pitStopNotUsed;
+[BuildingManager] public BuildingTypeGuide m_postServiceNotUsed;
+[BuildingManager] public BuildingTypeGuide m_raceStandNotUsed;
+[BuildingManager] public BuildingTypeGuide m_raceStartBuildingNotUsed;
+[BuildingManager] public BuildingTypeGuide m_roadTollsNotUsed;
+[BuildingManager] public BuildingTypeGuide m_stockExchangeNotUsed;
+[BuildingManager] public BuildingTypeGuide m_uniqueFactoryNotUsed;
+[BuildingManager] public BuildingTypeGuide m_uniqueFacultyNotUsed;
+[BuildingManager] public BuildingTypeGuide m_wasteTransferSystemNotUsed;
+[BuildingManager] public BuildingWrapper m_BuildingWrapper;
+[BuildingManager] public CityNameGroups.Environment m_cityNameGroups;
+[BuildingManager] public class Data : IDataContainer
+[BuildingManager] public const float BUILDINGGRID_CELL_SIZE = 64f;
+[BuildingManager] public const int BUILDINGGRID_RESOLUTION = 270;
+[BuildingManager] public const int MAX_ASSET_BUILDINGS = 1024;
+[BuildingManager] public const int MAX_BUILDING_COUNT = 49152;
+[BuildingManager] public const int MAX_MAP_BUILDINGS = 8192;
+[BuildingManager] public const int MAX_OUTSIDE_CONNECTIONS = 4;
+[BuildingManager] public delegate void BuildingCreatedHandler(ushort building);
+[BuildingManager] public delegate void BuildingReleasedHandler(ushort building);
+[BuildingManager] public delegate void BuildingRelocatedHandler(ushort building);
+[BuildingManager] public event BuildingCreatedHandler EventBuildingCreated;
+[BuildingManager] public event BuildingReleasedHandler EventBuildingReleased;
+[BuildingManager] public event BuildingRelocatedHandler EventBuildingRelocated;
+[BuildingManager] public FastList<ushort> GetOutsideConnections()
+[BuildingManager] public FastList<ushort> GetServiceBuildings(ItemClass.Service service)
+[BuildingManager] public float SampleSmoothHeight(Vector3 worldPos, ItemClass.Layer layers)
+[BuildingManager] public Func<BuildingInfo, bool> m_predicate;
+[BuildingManager] public GenericGuide m_buildNextToRoad;
+[BuildingManager] public GenericGuide m_buildNextToWater;
+[BuildingManager] public GenericGuide m_evacuationNotUsed;
+[BuildingManager] public GenericGuide m_extractorPlaced;
+[BuildingManager] public GenericGuide m_harborPlacement;
+[BuildingManager] public GenericGuide m_heatingPlacement;
+[BuildingManager] public GenericGuide m_hotelsOverview;
+[BuildingManager] public GenericGuide m_mainBuildingPlaced;
+[BuildingManager] public GenericGuide m_publicLibraryUnlocked;
+[BuildingManager] public GenericGuide m_roadMaintenancePlacement;
+[BuildingManager] public GenericGuide m_stockExchangePlaced;
+[BuildingManager] public GenericGuide m_tramDepotPlacement;
+[BuildingManager] public GenericGuide m_windTurbinePlacement;
+[BuildingManager] public IEnumerator<bool> SetBuildingName(ushort building, string name)
+[BuildingManager] public int ID_ACIMap;
+[BuildingManager] public int ID_BuildingColors;
+[BuildingManager] public int ID_BuildingLocations;
+[BuildingManager] public int ID_BuildingSize;
+[BuildingManager] public int ID_BuildingState;
+[BuildingManager] public int ID_BuildingStates;
+[BuildingManager] public int ID_Color;
+[BuildingManager] public int ID_HeightMap;
+[BuildingManager] public int ID_HeightMapping;
+[BuildingManager] public int ID_MainTex;
+[BuildingManager] public int ID_ObjectIndex;
+[BuildingManager] public int ID_ObjectIndices;
+[BuildingManager] public int ID_Speed;
+[BuildingManager] public int ID_State;
+[BuildingManager] public int ID_SurfaceMapping;
+[BuildingManager] public int ID_WaterHeightMap;
+[BuildingManager] public int ID_WaterHeightMapping;
+[BuildingManager] public int ID_WaterSurfaceMapping;
+[BuildingManager] public int ID_XYSMap;
+[BuildingManager] public int m_buildingCount;
+[BuildingManager] public int m_infoCount;
+[BuildingManager] public ItemClass.Set m_set;
+[BuildingManager] public LevelUpWrapper m_LevelUpWrapper;
+[BuildingManager] public MaterialPropertyBlock m_materialBlock;
+[BuildingManager] public MonumentAI.EffectData[] m_finalMonumentEffect;
+[BuildingManager] public MonumentAI.EffectData[] m_tempMonumentEffect;
+[BuildingManager] public Notification.ProblemStruct m_currentBuildingProblems;
+[BuildingManager] public Notification.ProblemStruct m_lastBuildingProblems;
+[BuildingManager] public override bool CalculateGroupData(int groupX, int groupZ, int layer, ref int vertexCount, ref int triangleCount, ref int objectCount, ref RenderGroup.VertexArrays vertexArrays)
+[BuildingManager] public override void AfterTerrainUpdate(TerrainArea heightArea, TerrainArea surfaceArea, TerrainArea zoneArea)
+[BuildingManager] public override void CheckReferences()
+[BuildingManager] public override void DestroyProperties(BuildingProperties properties)
+[BuildingManager] public override void EarlyUpdateData()
+[BuildingManager] public override void GetData(FastList<IDataContainer> data)
+[BuildingManager] public override void InitializeProperties(BuildingProperties properties)
+[BuildingManager] public override void InitRenderData()
+[BuildingManager] public override void PopulateGroupData(int groupX, int groupZ, int layer, ref int vertexIndex, ref int triangleIndex, Vector3 groupPosition, RenderGroup.MeshData data, ref Vector3 min, ref Vector3 max, ref float maxRenderDistance, ref float maxInstanceDistance, ref bool requireSurfaceMaps)
+[BuildingManager] public override void TerrainUpdated(TerrainArea heightArea, TerrainArea surfaceArea, TerrainArea zoneArea)
+[BuildingManager] public override void UpdateData(SimulationManager.UpdateMode mode)
+[BuildingManager] public Predicate2Delegate m_predicate2;
+[BuildingManager] public string GetBuildingName(ushort building, InstanceID caller)
+[BuildingManager] public string GetDefaultBuildingName(ushort building, InstanceID caller)
+[BuildingManager] public Texture2D m_lodAciAtlas;
+[BuildingManager] public Texture2D m_lodRgbAtlas;
+[BuildingManager] public Texture2D m_lodXysAtlas;
+[BuildingManager] public TransportLine.DepotLevels GetDepotLevels(ushort lineID)
+[BuildingManager] public ulong[] m_updatedBuildings;
+[BuildingManager] public UniqueFacultyAI.BonusData[] m_finalFacultyBonus;
+[BuildingManager] public UniqueFacultyAI.BonusData[] m_tempFacultyBonus;
+[BuildingManager] public ushort FindBuilding(Vector3 pos, float maxDistance, ItemClass.Service service, ItemClass.SubService subService, Building.Flags flagsRequired, Building.Flags flagsForbidden)
+[BuildingManager] public ushort FindNodeOwner(ushort node)
+[BuildingManager] public ushort FindTransportBuilding(Vector3 pos, float maxDistance, TransportInfo.TransportType type)
+[BuildingManager] public ushort GetWalkingBuilding(Vector3 worldPos)
+[BuildingManager] public ushort[] m_buildingGrid;
+[BuildingManager] public ushort[] m_buildingGrid2;
+[BuildingManager] public void AddDepot(ushort buildingID, ItemClass.SubService subService)
+[BuildingManager] public void AddOutsideConnection(ushort buildingID)
+[BuildingManager] public void AddServiceBuilding(ushort building, ItemClass.Service service)
+[BuildingManager] public void AfterDeserialize(DataSerializer s)
+[BuildingManager] public void AssignAdditionalSelectedServiceBuildingVehicle(ushort buildingID, int prefabIndex)
+[BuildingManager] public void AssignSelectedServiceBuildingVehicle(ushort buildingID, int prefabIndex)
+[BuildingManager] public void CalculateOutsideConnectionCount(ItemClass.Service service, ItemClass.SubService subService, out int incoming, out int outgoing)
+[BuildingManager] public void CalculateServiceProximity(Vector3 position, float radius, float[] serviceProximity, float[] subServiceProximity)
+[BuildingManager] public void CheckAllMilestones()
+[BuildingManager] public void Deserialize(DataSerializer s)
+[BuildingManager] public void HotelChainModified()
+[BuildingManager] public void InitializeStyleArray(int styleCount)
+[BuildingManager] public void ReleaseBuilding(ushort building)
+[BuildingManager] public void ReleaseDepot(ushort buildingID, ItemClass.SubService subService)
+[BuildingManager] public void RelocateBuilding(ushort building, Vector3 position, float angle)
+[BuildingManager] public void RelocateSubBuilding(ushort building, Vector3 position, float angle)
+[BuildingManager] public void RemoveOutsideConnection(ushort buildingID)
+[BuildingManager] public void RemoveServiceBuilding(ushort building, ItemClass.Service service)
+[BuildingManager] public void RoadCheckNeeded(ushort building)
+[BuildingManager] public void Serialize(DataSerializer s)
+[BuildingManager] public void TerrainHeightUpdateNeeded(ushort building)
+[BuildingManager] public void UpdateBuilding(ushort building)
+[BuildingManager] public void UpdateBuildingColors()
+[BuildingManager] public void UpdateBuildingColors(ushort building)
+[BuildingManager] public void UpdateBuildingColors(ushort min, ushort max)
+[BuildingManager] public void UpdateBuildingInfo(ushort building, BuildingInfo newInfo)
+[BuildingManager] public void UpdateBuildingInfo(ushort building, ref Building data, BuildingInfo newInfo)
+[BuildingManager] public void UpdateBuildingRenderer(ushort building, bool updateGroup)
+[BuildingManager] public void UpdateBuildingRenderer(ushort building, ref Building data, bool updateGroup)
+[BuildingManager] public void UpdateBuildingRenderer(ushort building, ref Building data, bool updateGroup, bool relocating)
+[BuildingManager] public void UpdateFlags(ushort building, Building.Flags changeMask)
+[BuildingManager] public void UpdateNotifications(ushort building, Notification.ProblemStruct oldProblems, Notification.ProblemStruct newProblems)
+[BuildingManager] public void UpdateParkingSpaces(ushort building, ref Building data)
+[BuildingManager] public void ZonesUpdated(float minX, float minZ, float maxX, float maxZ)
+[CargoTruckAI] protected bool StartPathFind(ushort vehicleID, ref Vehicle vehicleData, Vector3 startPos, Vector3 endPos, bool startBothWays, bool endBothWays, bool undergroundTarget, bool startNotUseTruck, bool endNotUseTruck)
+[CargoTruckAI] protected override bool ChangeVehicleType(ushort vehicleID, ref Vehicle vehicleData, PathUnit.Position pathPos, uint laneID)
+[CargoTruckAI] protected override bool CombustionEngine()
+[CargoTruckAI] protected override bool IsHeavyVehicle()
+[CargoTruckAI] protected override bool NeedChangeVehicleType(ushort vehicleID, ref Vehicle vehicleData, PathUnit.Position pathPos, uint laneID, VehicleInfo.VehicleType laneVehicleType, ref Vector4 targetPos)
+[CargoTruckAI] protected override bool StartPathFind(ushort vehicleID, ref Vehicle vehicleData)
+[CargoTruckAI] protected override bool StartPathFind(ushort vehicleID, ref Vehicle vehicleData, Vector3 startPos, Vector3 endPos, bool startBothWays, bool endBothWays, bool undergroundTarget)
+[CargoTruckAI] protected override void PathfindFailure(ushort vehicleID, ref Vehicle data)
+[CargoTruckAI] protected override void PathfindSuccess(ushort vehicleID, ref Vehicle data)
+[CargoTruckAI] public bool m_isHeavyVehicle;
+[CargoTruckAI] public int m_cargoCapacity = 1;
+[CargoTruckAI] public override bool ArriveAtDestination(ushort vehicleID, ref Vehicle vehicleData)
+[CargoTruckAI] public override Color GetColor(ushort vehicleID, ref Vehicle data, InfoManager.InfoMode infoMode, InfoManager.SubInfoMode subInfoMode)
+[CargoTruckAI] public override InstanceID GetTargetID(ushort vehicleID, ref Vehicle vehicleData)
+[CargoTruckAI] public override int GetNoiseLevel()
+[CargoTruckAI] public override string GetLocalizedStatus(ushort vehicleID, ref Vehicle data, out InstanceID target)
+[CargoTruckAI] public override VehicleInfo.VehicleCategory vehicleCategory => VehicleInfo.VehicleCategory.CargoTruck;
+[CargoTruckAI] public override void BuildingRelocated(ushort vehicleID, ref Vehicle data, ushort building)
+[CargoTruckAI] public override void CreateVehicle(ushort vehicleID, ref Vehicle data)
+[CargoTruckAI] public override void EnterTollRoad(ushort vehicle, ref Vehicle vehicleData, ushort buildingID, ushort segmentID, int basePrice)
+[CargoTruckAI] public override void GetBufferStatus(ushort vehicleID, ref Vehicle data, out string localeKey, out int current, out int max)
+[CargoTruckAI] public override void GetSize(ushort vehicleID, ref Vehicle data, out int size, out int max)
+[CargoTruckAI] public override void LoadVehicle(ushort vehicleID, ref Vehicle data)
+[CargoTruckAI] public override void ReleaseVehicle(ushort vehicleID, ref Vehicle data)
+[CargoTruckAI] public override void SetSource(ushort vehicleID, ref Vehicle data, ushort sourceBuilding)
+[CargoTruckAI] public override void SetTarget(ushort vehicleID, ref Vehicle data, ushort targetBuilding)
+[CargoTruckAI] public override void SimulationStep(ushort vehicleID, ref Vehicle data, Vector3 physicsLodRefPos)
+[CargoTruckAI] public override void StartTransfer(ushort vehicleID, ref Vehicle data, TransferManager.TransferReason material, TransferManager.TransferOffer offer)
+[CargoTruckAI] public override void UpdateBuildingTargetPositions(ushort vehicleID, ref Vehicle vehicleData, Vector3 refPos, ushort leaderID, ref Vehicle leaderData, ref int index, float minSqrDistance)
+[CargoTruckAI] public static bool ChangeVehicleType(VehicleInfo vehicleInfo, ushort vehicleID, ref Vehicle vehicleData, PathUnit.Position pathPos, uint laneID)
+[CargoTruckAI] public static bool NeedChangeVehicleType(VehicleInfo vehicleInfo, ushort vehicleID, ref Vehicle vehicleData, PathUnit.Position pathPos, uint laneID, VehicleInfo.VehicleType laneVehicleType, ref Vector4 targetPos)
+[CargoTruckAI] public static ushort FindNextCargoParent(ushort sourceBuilding, ItemClass.Service service, ItemClass.SubService subService)
+[CargoTruckAI] public static void SwitchCargoParent(ushort source, ushort target)
+[DistrictPolicies] public const Event HiddenEventPolicies = Event.CityParkAd | Event.AmusementParkAd | Event.NatureReserveAd | Event.ZooAd;
+[DistrictPolicies] public const Event HiddenVarsityEventPolicies = Event.Team01Ad | Event.Team02Ad | Event.Team03Ad | Event.Team04Ad | Event.Team05Ad | Event.Team06Ad | Event.Team07Ad;
+[DistrictPolicies] public const int CITYPLANNING_POLICY_COUNT = 26;
+[DistrictPolicies] public const int EVENT_POLICY_COUNT = 17;
+[DistrictPolicies] public const int PARK_POLICY_COUNT = 25;
+[DistrictPolicies] public const int SERVICE_POLICY_COUNT = 29;
+[DistrictPolicies] public const int SPECIAL_POLICY_COUNT = 1;
+[DistrictPolicies] public const int SPECIALIZATION_POLICY_COUNT = 13;
+[DistrictPolicies] public const int TAXATION_POLICY_COUNT = 11;
+[DistrictPolicies] public const Specialization CommercialSpecialization = Specialization.Leisure | Specialization.Tourist | Specialization.Organic | Specialization.CommercialWallToWall;
+[DistrictPolicies] public const Specialization IndustrySpecialization = Specialization.Forest | Specialization.Farming | Specialization.Oil | Specialization.Ore;
+[DistrictPolicies] public const Specialization OfficeSpecialization = Specialization.Hightech | Specialization.OfficeWallToWall | Specialization.Financial;
+[DistrictPolicies] public const Specialization ResidentialSpecialization = Specialization.Selfsufficient | Specialization.ResidentialWallToWall;
+[DistrictPolicies] public enum CityPlanning
+[DistrictPolicies] public enum Event
+[DistrictPolicies] public enum Park
+[DistrictPolicies] public enum Policies
+[DistrictPolicies] public enum Services
+[DistrictPolicies] public enum Special
+[DistrictPolicies] public enum Specialization
+[DistrictPolicies] public enum Taxation
+[DistrictPolicies] public enum Types
+[IndustrialBuildingAI] protected override string GetLocalizedStatusActive(ushort buildingID, ref Building data)
+[IndustrialBuildingAI] protected override void ManualActivation(ushort buildingID, ref Building buildingData)
+[IndustrialBuildingAI] protected override void ManualDeactivation(ushort buildingID, ref Building buildingData)
+[IndustrialBuildingAI] protected override void SimulationStepActive(ushort buildingID, ref Building buildingData, ref Building.Frame frameData)
+[IndustrialBuildingAI] public enum ProductType
+[IndustrialBuildingAI] public override bool GetFireParameters(ushort buildingID, ref Building buildingData, out int fireHazard, out int fireSize, out int fireTolerance)
+[IndustrialBuildingAI] public override Color GetColor(ushort buildingID, ref Building data, InfoManager.InfoMode infoMode, InfoManager.SubInfoMode subInfoMode)
+[IndustrialBuildingAI] public override float GetEventImpact(ushort buildingID, ref Building data, ImmaterialResourceManager.Resource resource, float amount)
+[IndustrialBuildingAI] public override float GetEventImpact(ushort buildingID, ref Building data, NaturalResourceManager.Resource resource, float amount)
+[IndustrialBuildingAI] public override int CalculateHomeCount(ItemClass.Level level, Randomizer r, int width, int length)
+[IndustrialBuildingAI] public override int CalculateProductionCapacity(ItemClass.Level level, Randomizer r, int width, int length)
+[IndustrialBuildingAI] public override int CalculateVisitplaceCount(ItemClass.Level level, Randomizer r, int width, int length)
+[IndustrialBuildingAI] public override int GetElectricityRate(ushort buildingID, ref Building data)
+[IndustrialBuildingAI] public override int GetGarbageRate(ushort buildingID, ref Building data)
+[IndustrialBuildingAI] public override int GetResourceRate(ushort buildingID, ref Building data, EconomyManager.Resource resource)
+[IndustrialBuildingAI] public override int GetResourceRate(ushort buildingID, ref Building data, ImmaterialResourceManager.Resource resource)
+[IndustrialBuildingAI] public override int GetResourceRate(ushort buildingID, ref Building data, NaturalResourceManager.Resource resource)
+[IndustrialBuildingAI] public override int GetWaterRate(ushort buildingID, ref Building data)
+[IndustrialBuildingAI] public override string GenerateName(ushort buildingID, InstanceID caller)
+[IndustrialBuildingAI] public override string GetDebugString(ushort buildingID, ref Building data)
+[IndustrialBuildingAI] public override string GetLevelUpInfo(ushort buildingID, ref Building data, out float progress)
+[IndustrialBuildingAI] public override void BuildingDeactivated(ushort buildingID, ref Building data)
+[IndustrialBuildingAI] public override void BuildingLoaded(ushort buildingID, ref Building data, uint version)
+[IndustrialBuildingAI] public override void CalculateWorkplaceCount(ItemClass.Level level, Randomizer r, int width, int length, out int level0, out int level1, out int level2, out int level3)
+[IndustrialBuildingAI] public override void CreateBuilding(ushort buildingID, ref Building data)
+[IndustrialBuildingAI] public override void GetConsumptionRates(ItemClass.Level level, Randomizer r, int productionRate, out int electricityConsumption, out int waterConsumption, out int sewageAccumulation, out int garbageAccumulation, out int incomeAccumulation, out int mailAccumulation)
+[IndustrialBuildingAI] public override void GetMaterialAmount(ushort buildingID, ref Building data, TransferManager.TransferReason material, out int amount, out int max)
+[IndustrialBuildingAI] public override void GetPollutionRates(ItemClass.Level level, int productionRate, DistrictPolicies.CityPlanning cityPlanningPolicies, out int groundPollution, out int noisePollution)
+[IndustrialBuildingAI] public override void InitializePrefab()
+[IndustrialBuildingAI] public override void ModifyMaterialBuffer(ushort buildingID, ref Building data, TransferManager.TransferReason material, ref int amountDelta)
+[IndustrialBuildingAI] public override void PlayAudio(AudioManager.ListenerInfo listenerInfo, ushort buildingID, ref Building data)
+[IndustrialBuildingAI] public override void ReleaseBuilding(ushort buildingID, ref Building data)
+[IndustrialBuildingAI] public override void SimulationStep(ushort buildingID, ref Building buildingData, ref Building.Frame frameData)
+[IndustrialBuildingAI] public override void StartTransfer(ushort buildingID, ref Building data, TransferManager.TransferReason material, TransferManager.TransferOffer offer)
+[IndustrialBuildingAI] public static Color GetResourceColor(ItemClass.SubService subService)
+[IndustrialBuildingAI] public static ProductType GetProductType(TransferManager.TransferReason resource)
+[IndustrialExtractorAI] protected override string GetLocalizedStatusActive(ushort buildingID, ref Building data)
+[IndustrialExtractorAI] protected override void ManualActivation(ushort buildingID, ref Building buildingData)
+[IndustrialExtractorAI] protected override void ManualDeactivation(ushort buildingID, ref Building buildingData)
+[IndustrialExtractorAI] protected override void SimulationStepActive(ushort buildingID, ref Building buildingData, ref Building.Frame frameData)
+[IndustrialExtractorAI] public override bool GetFireParameters(ushort buildingID, ref Building buildingData, out int fireHazard, out int fireSize, out int fireTolerance)
+[IndustrialExtractorAI] public override BuildingInfoSub FindCollapsedInfo(out int rotations)
+[IndustrialExtractorAI] public override Color GetColor(ushort buildingID, ref Building data, InfoManager.InfoMode infoMode, InfoManager.SubInfoMode subInfoMode)
+[IndustrialExtractorAI] public override float GetEventImpact(ushort buildingID, ref Building data, ImmaterialResourceManager.Resource resource, float amount)
+[IndustrialExtractorAI] public override float GetEventImpact(ushort buildingID, ref Building data, NaturalResourceManager.Resource resource, float amount)
+[IndustrialExtractorAI] public override int CalculateHomeCount(ItemClass.Level level, Randomizer r, int width, int length)
+[IndustrialExtractorAI] public override int CalculateProductionCapacity(ItemClass.Level level, Randomizer r, int width, int length)
+[IndustrialExtractorAI] public override int CalculateVisitplaceCount(ItemClass.Level level, Randomizer r, int width, int length)
+[IndustrialExtractorAI] public override int GetElectricityRate(ushort buildingID, ref Building data)
+[IndustrialExtractorAI] public override int GetGarbageRate(ushort buildingID, ref Building data)
+[IndustrialExtractorAI] public override int GetResourceRate(ushort buildingID, ref Building data, EconomyManager.Resource resource)
+[IndustrialExtractorAI] public override int GetResourceRate(ushort buildingID, ref Building data, ImmaterialResourceManager.Resource resource)
+[IndustrialExtractorAI] public override int GetResourceRate(ushort buildingID, ref Building data, NaturalResourceManager.Resource resource)
+[IndustrialExtractorAI] public override int GetWaterRate(ushort buildingID, ref Building data)
+[IndustrialExtractorAI] public override string GenerateName(ushort buildingID, InstanceID caller)
+[IndustrialExtractorAI] public override string GetDebugString(ushort buildingID, ref Building data)
+[IndustrialExtractorAI] public override string GetLevelUpInfo(ushort buildingID, ref Building data, out float progress)
+[IndustrialExtractorAI] public override VehicleInfo.VehicleCategory GetRequiredVehicleAccess(ushort buildingAI, ref Building data)
+[IndustrialExtractorAI] public override void BuildingDeactivated(ushort buildingID, ref Building data)
+[IndustrialExtractorAI] public override void BuildingLoaded(ushort buildingID, ref Building data, uint version)
+[IndustrialExtractorAI] public override void CalculateWorkplaceCount(ItemClass.Level level, Randomizer r, int width, int length, out int level0, out int level1, out int level2, out int level3)
+[IndustrialExtractorAI] public override void CreateBuilding(ushort buildingID, ref Building data)
+[IndustrialExtractorAI] public override void GetConsumptionRates(ItemClass.Level level, Randomizer r, int productionRate, out int electricityConsumption, out int waterConsumption, out int sewageAccumulation, out int garbageAccumulation, out int incomeAccumulation, out int mailAccumulation)
+[IndustrialExtractorAI] public override void GetMaterialAmount(ushort buildingID, ref Building data, TransferManager.TransferReason material, out int amount, out int max)
+[IndustrialExtractorAI] public override void GetPollutionRates(ItemClass.Level level, int productionRate, DistrictPolicies.CityPlanning cityPlanningPolicies, out int groundPollution, out int noisePollution)
+[IndustrialExtractorAI] public override void InitializePrefab()
+[IndustrialExtractorAI] public override void ModifyMaterialBuffer(ushort buildingID, ref Building data, TransferManager.TransferReason material, ref int amountDelta)
+[IndustrialExtractorAI] public override void PlayAudio(AudioManager.ListenerInfo listenerInfo, ushort buildingID, ref Building data)
+[IndustrialExtractorAI] public override void ReleaseBuilding(ushort buildingID, ref Building data)
+[IndustrialExtractorAI] public override void SimulationStep(ushort buildingID, ref Building buildingData, ref Building.Frame frameData)
+[IndustrialExtractorAI] public override void StartTransfer(ushort buildingID, ref Building data, TransferManager.TransferReason material, TransferManager.TransferOffer offer)
+[ItemClass] public bool isCommercialEco => m_subService == SubService.CommercialEco;
+[ItemClass] public bool isCommercialHighGenegic => m_subService == SubService.CommercialHigh;
+[ItemClass] public bool isCommercialLeisure => m_subService == SubService.CommercialLeisure;
+[ItemClass] public bool isCommercialLowGeneric => m_subService == SubService.CommercialLow;
+[ItemClass] public bool isCommercialTourist => m_subService == SubService.CommercialTourist;
+[ItemClass] public bool isCommercialWallToWall => m_subService == SubService.CommercialWallToWall;
+[ItemClass] public bool isIndustrialAny => isIndustrialGeneric || isIndustrialFarming || isIndustrialForestry || isIndustrialOil || isIndustrialOre;
+[ItemClass] public bool isIndustrialFarming => m_subService == SubService.IndustrialFarming;
+[ItemClass] public bool isIndustrialForestry => m_subService == SubService.IndustrialForestry;
+[ItemClass] public bool isIndustrialGeneric => m_subService == SubService.IndustrialGeneric;
+[ItemClass] public bool isIndustrialOil => m_subService == SubService.IndustrialOil;
+[ItemClass] public bool isIndustrialOre => m_subService == SubService.IndustrialOre;
+[ItemClass] public bool isOfficeAny => isOfficeGeneric || isOfficeHightech || isOfficeFinancial;
+[ItemClass] public bool isOfficeFinancial => m_subService == SubService.OfficeFinancial;
+[ItemClass] public bool isOfficeGeneric => m_subService == SubService.OfficeGeneric || m_subService == SubService.OfficeWallToWall || isOfficeFinancial;
+[ItemClass] public bool isOfficeHightech => m_subService == SubService.OfficeHightech;
+[ItemClass] public bool isResidentialHighAny => isResidentialHighGeneric || isResidentialHighEco;
+[ItemClass] public bool isResidentialHighEco => m_subService == SubService.ResidentialHighEco;
+[ItemClass] public bool isResidentialHighGeneric => m_subService == SubService.ResidentialHigh;
+[ItemClass] public bool isResidentialLowAny => isResidentialLowGeneric || isResidentialLowEco;
+[ItemClass] public bool isResidentialLowEco => m_subService == SubService.ResidentialLowEco;
+[ItemClass] public bool isResidentialLowGeneric => m_subService == SubService.ResidentialLow;
+[ItemClass] public bool isResidentialWallToWall => m_subService == SubService.ResidentialWallToWall;
+[ItemClass] public bool IsSet(Level level)
+[ItemClass] public bool IsSet(Service service)
+[ItemClass] public bool IsSet(SubService subService)
+[ItemClass] public const int LevelCount = 5;
+[ItemClass] public const int PrivateServiceCount = 8;
+[ItemClass] public const int PrivateSubServiceCount = 20;
+[ItemClass] public const int PublicServiceCount = 20;
+[ItemClass] public const int PublicSubServiceCount = 22;
+[ItemClass] public const int ServiceCount = 28;
+[ItemClass] public const int SubServiceCount = 42;
+[ItemClass] public const int ZoneCount = 8;
+[ItemClass] public enum Availability
+[ItemClass] public enum CollisionType
+[ItemClass] public enum Layer
+[ItemClass] public enum Level
+[ItemClass] public enum Placement
+[ItemClass] public enum Service
+[ItemClass] public enum SubService
+[ItemClass] public enum Zone
+[ItemClass] public IEnumerable<Level> levels
+[ItemClass] public IEnumerable<Service> services
+[ItemClass] public IEnumerable<SubService> subServices
+[ItemClass] public Layer m_layer = Layer.Default;
+[ItemClass] public Level m_level;
+[ItemClass] public Service m_service;
+[ItemClass] public static bool CheckCollisionType(float minY1, float maxY1, float minY2, float maxY2, CollisionType collisionType1, CollisionType collisionType2)
+[ItemClass] public static int GetPrivateServiceIndex(Service service)
+[ItemClass] public static int GetPrivateSubServiceIndex(SubService subService)
+[ItemClass] public static int GetPublicServiceIndex(Service service)
+[ItemClass] public static int GetPublicSubServiceIndex(SubService subService)
+[ItemClass] public struct Set
+[ItemClass] public SubService m_subService;
+[ItemClass] public void AddAllLevels()
+[ItemClass] public void AddAllServices()
+[ItemClass] public void AddAllSubServices()
+[ItemClass] public void AddLevel(Level level)
+[ItemClass] public void AddService(Service service)
+[ItemClass] public void AddSubService(SubService subService)
+[ItemClass] public void RemoveLevel(Level level)
+[ItemClass] public void RemoveService(Service service)
+[ItemClass] public void RemoveSubService(SubService subService)
+[ItemClass] public Zone GetSecondaryZone()
+[ItemClass] public Zone GetZone()
+[OutsideConnectionAI] public bool m_useCloseNames = true;
+[OutsideConnectionAI] public bool m_useFarNames;
+[OutsideConnectionAI] public bool m_useMediumNames;
+[OutsideConnectionAI] public int m_cargoCapacity = 20;
+[OutsideConnectionAI] public int m_dummyTrafficFactor = 1000;
+[OutsideConnectionAI] public int m_residentCapacity = 1000;
+[OutsideConnectionAI] public int m_touristFactor0 = 325;
+[OutsideConnectionAI] public int m_touristFactor1 = 125;
+[OutsideConnectionAI] public int m_touristFactor2 = 50;
+[OutsideConnectionAI] public override Color GetColor(ushort buildingID, ref Building data, InfoManager.InfoMode infoMode, InfoManager.SubInfoMode subInfoMode)
+[OutsideConnectionAI] public override string GenerateName(ushort buildingID, InstanceID caller)
+[OutsideConnectionAI] public override TransportInfo GetTransportLineInfo()
+[OutsideConnectionAI] public override void BuildingLoaded(ushort buildingID, ref Building data, uint version)
+[OutsideConnectionAI] public override void CalculateSpawnPosition(ushort buildingID, ref Building data, ref Randomizer randomizer, CitizenInfo info, out Vector3 position, out Vector3 target)
+[OutsideConnectionAI] public override void CalculateSpawnPosition(ushort buildingID, ref Building data, ref Randomizer randomizer, VehicleInfo info, out Vector3 position, out Vector3 target)
+[OutsideConnectionAI] public override void CalculateUnspawnPosition(ushort buildingID, ref Building data, ref Randomizer randomizer, CitizenInfo info, ushort ignoreInstance, out Vector3 position, out Vector3 target, out Vector2 direction, out CitizenInstance.Flags specialFlags)
+[OutsideConnectionAI] public override void CalculateUnspawnPosition(ushort buildingID, ref Building data, ref Randomizer randomizer, VehicleInfo info, out Vector3 position, out Vector3 target)
+[OutsideConnectionAI] public override void CreateBuilding(ushort buildingID, ref Building data)
+[OutsideConnectionAI] public override void ModifyMaterialBuffer(ushort buildingID, ref Building data, TransferManager.TransferReason material, ref int amountDelta)
+[OutsideConnectionAI] public override void PathfindFailure(ushort buildingID, ref Building data, PathFindType type)
+[OutsideConnectionAI] public override void PathfindSuccess(ushort buildingID, ref Building data, PathFindType type)
+[OutsideConnectionAI] public override void ReleaseBuilding(ushort buildingID, ref Building data)
+[OutsideConnectionAI] public override void SimulationStep(ushort buildingID, ref Building data)
+[OutsideConnectionAI] public override void StartTransfer(ushort buildingID, ref Building data, TransferManager.TransferReason material, TransferManager.TransferOffer offer)
+[OutsideConnectionAI] public static bool StartConnectionTransfer(ushort buildingID, ref Building data, TransferManager.TransferReason material, TransferManager.TransferOffer offer, int touristFactor0, int touristFactor1, int touristFactor2)
+[OutsideConnectionAI] public static int GetProductionRate(int productionRate, int budget)
+[OutsideConnectionAI] public static void AddConnectionOffers(ushort buildingID, ref Building data, int productionRate, int cargoCapacity, int residentCapacity, int touristFactor0, int touristFactor1, int touristFactor2, TransferManager.TransferReason dummyTrafficReason, int dummyTrafficFactor)
+[OutsideConnectionAI] public static void ImportResource(ushort buildingID, ref Building data, TransferManager.TransferReason resource, int amount)
+[OutsideConnectionAI] public static void PathfindFailureImpl(ushort buildingID, ref Building data, PathFindType type)
+[OutsideConnectionAI] public static void PathfindSuccessImpl(ushort buildingID, ref Building data, PathFindType type)
+[OutsideConnectionAI] public static void RemoveConnectionOffers(ushort buildingID, ref Building data, TransferManager.TransferReason dummyTrafficReason)
+[OutsideConnectionAI] public TransferManager.TransferReason m_dummyTrafficReason = TransferManager.TransferReason.None;
+[OutsideConnectionAI] public TransportInfo m_transportInfo;
+[TransferManager] protected override void Awake()
+[TransferManager] protected override void SimulationStepImpl(int subStep)
+[TransferManager] public bool Active
+[TransferManager] public bool Exclude
+[TransferManager] public bool Unlimited
+[TransferManager] public byte m_isLocalPark;
+[TransferManager] public byte Park
+[TransferManager] public class Data : IDataContainer
+[TransferManager] public const float LARGE_POS_LIMIT = 4800f;
+[TransferManager] public const float REASON_CELL_SIZE_LARGE = 270f;
+[TransferManager] public const float REASON_CELL_SIZE_SMALL = 37.5f;
+[TransferManager] public const int TRANSFER_OFFER_COUNT = 256;
+[TransferManager] public const int TRANSFER_PRIORITY_COUNT = 8;
+[TransferManager] public const int TRANSFER_REASON_COUNT = 128;
+[TransferManager] public const uint FLAG_ACTIVE = 1u;
+[TransferManager] public const uint FLAG_AMOUNT = 65280u;
+[TransferManager] public const uint FLAG_EXCLUDE = 4u;
+[TransferManager] public const uint FLAG_LARGE_POS = 2u;
+[TransferManager] public const uint FLAG_POSITION_X = 16711680u;
+[TransferManager] public const uint FLAG_POSITION_Z = 4278190080u;
+[TransferManager] public const uint FLAG_PRIORITY = 240u;
+[TransferManager] public const uint FLAG_UNLIMITED = 8u;
+[TransferManager] public const uint OBJECT_BUILDING = 16777216u;
+[TransferManager] public const uint OBJECT_CITIZEN = 67108864u;
+[TransferManager] public const uint OBJECT_INDEX = 16777215u;
+[TransferManager] public const uint OBJECT_TRANSPORT = 134217728u;
+[TransferManager] public const uint OBJECT_TYPE = 4278190080u;
+[TransferManager] public const uint OBJECT_VEHICLE = 33554432u;
+[TransferManager] public enum TransferReason
+[TransferManager] public InstanceID m_object;
+[TransferManager] public int Amount
+[TransferManager] public int m_unitCount;
+[TransferManager] public int PositionX
+[TransferManager] public int PositionZ
+[TransferManager] public int Priority
+[TransferManager] public override void GetData(FastList<IDataContainer> data)
+[TransferManager] public override void UpdateData(SimulationManager.UpdateMode mode)
+[TransferManager] public static TransferReason GetFrameReason(int frameIndex)
+[TransferManager] public struct TransferOffer
+[TransferManager] public uint Citizen
+[TransferManager] public uint m_flags;
+[TransferManager] public ushort Building
+[TransferManager] public ushort NetNode
+[TransferManager] public ushort NetSegment
+[TransferManager] public ushort TransportLine
+[TransferManager] public ushort Vehicle
+[TransferManager] public Vector3 Position
+[TransferManager] public void AddIncomingOffer(TransferReason material, TransferOffer offer)
+[TransferManager] public void AddOutgoingOffer(TransferReason material, TransferOffer offer)
+[TransferManager] public void AfterDeserialize(DataSerializer s)
+[TransferManager] public void Deserialize(DataSerializer s)
+[TransferManager] public void RemoveIncomingOffer(TransferReason material, TransferOffer offer)
+[TransferManager] public void RemoveOutgoingOffer(TransferReason material, TransferOffer offer)
+[TransferManager] public void Serialize(DataSerializer s)
+[Vehicle] public bool m_insideBuilding = false;
+[Vehicle] public bool m_transition = false;
+[Vehicle] public bool m_underground = false;
+[Vehicle] public bool RayCast(ushort vehicleID, Segment3 ray, Flags ignoreFlags, out float t)
+[Vehicle] public bool RenderInstance(RenderManager.CameraInfo cameraInfo, ushort vehicleID)
+[Vehicle] public byte m_blockCounter;
+[Vehicle] public byte m_gateIndex;
+[Vehicle] public byte m_lastFrame;
+[Vehicle] public byte m_lastPathOffset;
+[Vehicle] public byte m_pathPositionIndex;
+[Vehicle] public byte m_racerIndex;
+[Vehicle] public byte m_raceTeammate;
+[Vehicle] public byte m_transferType;
+[Vehicle] public byte m_waitCounter;
+[Vehicle] public const Flags AllFlags = Flags.LeftHandDrive | Flags.Created | Flags.Deleted | Flags.Spawned | Flags.Inverted | Flags.TransferToTarget | Flags.TransferToSource | Flags.Emergency1 | Flags.Emergency2 | Flags.WaitingPath | Flags.Stopped | Flags.Leaving | Flags.Arriving | Flags.Reversed | Flags.TakingOff | Flags.Flying | Flags.Landing | Flags.WaitingSpace | Flags.WaitingCargo | Flags.GoingBack | Flags.WaitingTarget | Flags.Importing | Flags.Exporting | Flags.Parking | Flags.CustomName | Flags.OnGravel | Flags.WaitingLoading | Flags.Congestion | Flags.DummyTraffic | Flags.Underground | Flags.Transition | Flags.InsideBuilding;
+[Vehicle] public enum Flags
+[Vehicle] public enum Flags2
+[Vehicle] public Flags m_flags;
+[Vehicle] public Flags2 m_flags2;
+[Vehicle] public float CalculateTotalLength(ushort vehicleID)
+[Vehicle] public float CalculateTotalLength(ushort vehicleID, out int totalNoise)
+[Vehicle] public float m_angleVelocity = 0f;
+[Vehicle] public float m_blinkState = 0f;
+[Vehicle] public float m_steerAngle = 0f;
+[Vehicle] public float m_travelDistance = 0f;
+[Vehicle] public Frame GetFrameData(uint simulationFrame)
+[Vehicle] public Frame GetLastFrameData()
+[Vehicle] public Frame m_frame0;
+[Vehicle] public Frame m_frame1;
+[Vehicle] public Frame m_frame2;
+[Vehicle] public Frame m_frame3;
+[Vehicle] public int CalculateNoise(VehicleInfo info, ushort vehicleID)
+[Vehicle] public PositionAndRotation GetPositionAndRotation(ushort vehicleID)
+[Vehicle] public Quaternion m_rotation = rotation;
+[Vehicle] public Quaternion rotation;
+[Vehicle] public RaceTeamInfo RaceTeamInfo
+[Vehicle] public Segment3 m_segment;
+[Vehicle] public static bool GetClosestFreeTrailer(ushort vehicleID, Vector3 position, out ushort trailerID, out uint unitID)
+[Vehicle] public static void RenderInstance(RenderManager.CameraInfo cameraInfo, VehicleInfo info, Vector3 position, Quaternion rotation, Vector3 swayPosition, Vector4 lightState, Vector4 tyrePosition, Vector3 velocity, float acceleration, Color color, Flags flags, Flags2 flags2, int variationMask, InstanceID id, bool underground, bool overground)
+[Vehicle] public static void RenderLod(RenderManager.CameraInfo cameraInfo, VehicleInfoBase info)
+[Vehicle] public static void RenderUndergroundLod(RenderManager.CameraInfo cameraInfo, VehicleInfoBase info)
+[Vehicle] public struct Frame(Vector3 position, Quaternion rotation)
+[Vehicle] public struct PositionAndRotation
+[Vehicle] public uint GetNotFullCitizenUnit(CitizenUnit.Flags flag)
+[Vehicle] public uint GetTargetFrame(VehicleInfo info, ushort vehicleID)
+[Vehicle] public uint m_citizenUnits;
+[Vehicle] public uint m_path;
+[Vehicle] public ushort CreateTrailer(ushort vehicleID, VehicleInfo trailerInfo, bool invert)
+[Vehicle] public ushort GetFirstVehicle(ushort vehicleID)
+[Vehicle] public ushort GetLastVehicle(ushort vehicleID)
+[Vehicle] public ushort m_cargoParent;
+[Vehicle] public ushort m_custom;
+[Vehicle] public ushort m_eventRoute
+[Vehicle] public ushort m_firstCargo;
+[Vehicle] public ushort m_infoIndex;
+[Vehicle] public ushort m_leadingVehicle;
+[Vehicle] public ushort m_nextCargo;
+[Vehicle] public ushort m_nextGridVehicle;
+[Vehicle] public ushort m_nextGuestVehicle;
+[Vehicle] public ushort m_nextLineVehicle;
+[Vehicle] public ushort m_nextOwnVehicle;
+[Vehicle] public ushort m_raceTeam;
+[Vehicle] public ushort m_sourceBuilding;
+[Vehicle] public ushort m_targetBuilding;
+[Vehicle] public ushort m_touristCount;
+[Vehicle] public ushort m_trailingVehicle;
+[Vehicle] public ushort m_transferSize;
+[Vehicle] public ushort m_transportLine;
+[Vehicle] public ushort m_waterSource;
+[Vehicle] public Vector3 GetClosestDoorPosition(Vector3 position, VehicleInfo.DoorType type)
+[Vehicle] public Vector3 GetFramePosition(uint simulationFrame)
+[Vehicle] public Vector3 GetLastFramePosition()
+[Vehicle] public Vector3 GetLastFrameVelocity()
+[Vehicle] public Vector3 GetRandomDoorPosition(ref Randomizer r, VehicleInfo.DoorType type)
+[Vehicle] public Vector3 GetSmoothPosition(ushort vehicleID)
+[Vehicle] public Vector3 GetSmoothVelocity(ushort vehicleID)
+[Vehicle] public Vector3 m_position = position;
+[Vehicle] public Vector3 m_swayPosition = Vector3.zero;
+[Vehicle] public Vector3 m_swayVelocity = Vector3.zero;
+[Vehicle] public Vector3 m_velocity = Vector3.zero;
+[Vehicle] public Vector3 position;
+[Vehicle] public Vector4 GetTargetPos(int index)
+[Vehicle] public Vector4 m_lightIntensity = Vector4.zero;
+[Vehicle] public Vector4 m_targetPos0;
+[Vehicle] public Vector4 m_targetPos1;
+[Vehicle] public Vector4 m_targetPos2;
+[Vehicle] public Vector4 m_targetPos3;
+[Vehicle] public VehicleInfo Info
+[Vehicle] public void CheckOverlayAlpha(ref float alpha)
+[Vehicle] public void GetSmoothPosition(ushort vehicleID, out Vector3 position, out Quaternion rotation)
+[Vehicle] public void PlayAudio(AudioManager.ListenerInfo listenerInfo, ushort vehicleID)
+[Vehicle] public void RenderOverlay(RenderManager.CameraInfo cameraInfo, ushort vehicleID, Color color)
+[Vehicle] public void SetFrameData(uint simulationFrame, Frame data)
+[Vehicle] public void SetLastFrameData(Frame data)
+[Vehicle] public void SetTargetPos(int index, Vector4 pos)
+[Vehicle] public void Spawn(ushort vehicleID)
+[Vehicle] public void Unspawn(ushort vehicleID)
+[VehicleInfo] public bool m_isLargeVehicle;
+[VehicleInfo] public bool m_useColorVariations = true;
+[VehicleInfo] public class MeshInfo
+[VehicleInfo] public Color GetColor(ref Randomizer r)
+[VehicleInfo] public Color m_color0;
+[VehicleInfo] public Color m_color1;
+[VehicleInfo] public Color m_color2;
+[VehicleInfo] public Color m_color3;
+[VehicleInfo] public DoorType m_type;
+[VehicleInfo] public Effect[] m_effects;
+[VehicleInfo] public EffectInfo m_effect;
+[VehicleInfo] public enum DoorType
+[VehicleInfo] public enum VehicleCategory : long
+[VehicleInfo] public enum VehicleCategoryPart1
+[VehicleInfo] public enum VehicleCategoryPart2
+[VehicleInfo] public enum VehicleType
+[VehicleInfo] public float m_acceleration = 1f;
+[VehicleInfo] public float m_attachOffsetBack;
+[VehicleInfo] public float m_attachOffsetFront;
+[VehicleInfo] public float m_braking = 2f;
+[VehicleInfo] public float m_dampers = 0.5f;
+[VehicleInfo] public float m_leanMultiplier = 1f;
+[VehicleInfo] public float m_maxSpeed = 20f;
+[VehicleInfo] public float m_nodMultiplier = 1f;
+[VehicleInfo] public float m_springs = 0.9f;
+[VehicleInfo] public float m_turning = 0.2f;
+[VehicleInfo] public int m_invertProbability;
+[VehicleInfo] public int m_maxTrailerCount;
+[VehicleInfo] public int m_probability;
+[VehicleInfo] public int m_variationMask;
+[VehicleInfo] public ItemClass m_class;
+[VehicleInfo] public ItemClass.Availability m_availableIn = ItemClass.Availability.All;
+[VehicleInfo] public ItemClass.Placement m_placementStyle;
+[VehicleInfo] public MeshInfo()
+[VehicleInfo] public MeshInfo(MeshInfo other)
+[VehicleInfo] public MeshInfo[] m_subMeshes;
+[VehicleInfo] public override ItemClass.Level GetClassLevel()
+[VehicleInfo] public override ItemClass.Service GetService()
+[VehicleInfo] public override ItemClass.SubService GetSubService()
+[VehicleInfo] public override PrefabAI GetAI()
+[VehicleInfo] public override string GetUncheckedLocalizedTitle()
+[VehicleInfo] public override void DestroyPrefab()
+[VehicleInfo] public override void EditorInstantiateProperties(bool recalcInfo = true)
+[VehicleInfo] public override void InitializePrefab()
+[VehicleInfo] public override void RefreshLevelOfDetail()
+[VehicleInfo] public override void RenderMesh(RenderManager.CameraInfo cameraInfo)
+[VehicleInfo] public static Vector4[] s_EmptyTyreArray = new Vector4[1]
+[VehicleInfo] public static VehicleCategory GetCategory(VehicleCategoryPart1 part1, VehicleCategoryPart2 part2)
+[VehicleInfo] public static void GetCategoryParts(VehicleCategory category, out VehicleCategoryPart1 part1, out VehicleCategoryPart2 part2)
+[VehicleInfo] public struct Effect
+[VehicleInfo] public struct VehicleDoor
+[VehicleInfo] public struct VehicleTrailer
+[VehicleInfo] public Vector3 m_location;
+[VehicleInfo] public Vector3[] m_lightPositions;
+[VehicleInfo] public Vehicle.Flags m_vehicleFlagsForbidden;
+[VehicleInfo] public Vehicle.Flags m_vehicleFlagsRequired;
+[VehicleInfo] public Vehicle.Flags2 m_vehicleFlagsForbidden2;
+[VehicleInfo] public Vehicle.Flags2 m_vehicleFlagsRequired2;
+[VehicleInfo] public VehicleAI m_vehicleAI;
+[VehicleInfo] public VehicleCategory vehicleCategory
+[VehicleInfo] public VehicleCategoryPart1 m_vehicleCategoryPart1;
+[VehicleInfo] public VehicleCategoryPart2 m_vehicleCategoryPart2;
+[VehicleInfo] public VehicleDoor[] m_doors;
+[VehicleInfo] public VehicleInfo m_info;
+[VehicleInfo] public VehicleInfoBase m_subInfo;
+[VehicleInfo] public VehicleParked.Flags m_parkedFlagsForbidden;
+[VehicleInfo] public VehicleParked.Flags m_parkedFlagsRequired;
+[VehicleInfo] public VehicleTrailer[] m_trailers;
+[VehicleInfo] public VehicleType m_vehicleType;
+[VehicleInfo] public void EditorInstantiateProperties(bool recaltInfo = true)
+[VehicleInfo] public void GetRenderParameters(Vector3 position, Quaternion rotation, VehicleAI vehicleAI, out Vector4 lightState, out Color color, out Vector4 tyrePosition, out Matrix4x4 bodyMatrix, out Matrix4x4 tyreMatrix)
+[VehicleInfo] public void RenderMesh(RenderManager.CameraInfo cameraInfo, Vector3 offset, Vehicle.Flags flags = Vehicle.Flags.Created | Vehicle.Flags.Spawned, Vehicle.Flags2 flags2 = (Vehicle.Flags2)0)
+[VehicleInfo] public void RenderMesh(Vector3 position, Quaternion rotation, Camera camera)
+[VehicleManager] protected override void Awake()
+[VehicleManager] protected override void EndRenderingImpl(RenderManager.CameraInfo cameraInfo)
+[VehicleManager] protected override void PlayAudioImpl(AudioManager.ListenerInfo listenerInfo)
+[VehicleManager] protected override void SimulationStepImpl(int subStep)
+[VehicleManager] public Array16<Vehicle> m_vehicles;
+[VehicleManager] public Array16<VehicleParked> m_parkedVehicles;
+[VehicleManager] public AudioGroup m_audioGroup;
+[VehicleManager] public bool CreateParkedVehicle(out ushort parked, ref Randomizer r, VehicleInfo info, Vector3 position, Quaternion rotation, uint ownerCitizen)
+[VehicleManager] public bool CreateVehicle(out ushort vehicle, ref Randomizer r, VehicleInfo info, Vector3 position, TransferManager.TransferReason type, bool transferToSource, bool transferToTarget)
+[VehicleManager] public bool m_parkedUpdated;
+[VehicleManager] public bool RayCast(Segment3 ray, Vehicle.Flags ignoreFlags, VehicleParked.Flags ignoreFlags2, out Vector3 hit, out ushort vehicleIndex, out ushort parkedIndex)
+[VehicleManager] public class Data : IDataContainer
+[VehicleManager] public class VehicleTypeComparer : IComparer<ushort>
+[VehicleManager] public const float VEHICLEGRID_CELL_SIZE = 32f;
+[VehicleManager] public const float VEHICLEGRID_CELL_SIZE2 = 320f;
+[VehicleManager] public const int MAX_PARKED_COUNT = 32768;
+[VehicleManager] public const int MAX_VEHICLE_COUNT = 16384;
+[VehicleManager] public const int VEHICLEGRID_RESOLUTION = 540;
+[VehicleManager] public const int VEHICLEGRID_RESOLUTION2 = 54;
+[VehicleManager] public IEnumerator<bool> SetParkedVehicleName(ushort parkedID, string name)
+[VehicleManager] public IEnumerator<bool> SetVehicleName(ushort vehicleID, string name)
+[VehicleManager] public int ID_ACIMap;
+[VehicleManager] public int ID_AtlasRect;
+[VehicleManager] public int ID_CCCMap;
+[VehicleManager] public int ID_Color;
+[VehicleManager] public int ID_ColorV0;
+[VehicleManager] public int ID_ColorV1;
+[VehicleManager] public int ID_ColorV2;
+[VehicleManager] public int ID_ColorV3;
+[VehicleManager] public int ID_LightState;
+[VehicleManager] public int ID_MainTex;
+[VehicleManager] public int ID_RacerData;
+[VehicleManager] public int ID_RacerRect;
+[VehicleManager] public int ID_TyreLocation;
+[VehicleManager] public int ID_TyreMatrix;
+[VehicleManager] public int ID_TyrePosition;
+[VehicleManager] public int ID_VehicleColor;
+[VehicleManager] public int ID_VehicleLightState;
+[VehicleManager] public int ID_VehicleTransform;
+[VehicleManager] public int ID_XYSMap;
+[VehicleManager] public int m_infoCount;
+[VehicleManager] public int m_parkedCount;
+[VehicleManager] public int m_undergroundLayer;
+[VehicleManager] public int m_vehicleCount;
+[VehicleManager] public int[] GetBusTypeWeights()
+[VehicleManager] public MaterialPropertyBlock m_materialBlock;
+[VehicleManager] public override void CheckReferences()
+[VehicleManager] public override void DestroyProperties(VehicleProperties properties)
+[VehicleManager] public override void GetData(FastList<IDataContainer> data)
+[VehicleManager] public override void InitializeProperties(VehicleProperties properties)
+[VehicleManager] public override void InitRenderData()
+[VehicleManager] public override void UpdateData(SimulationManager.UpdateMode mode)
+[VehicleManager] public static VehicleTypeComparer comparer = new VehicleTypeComparer();
+[VehicleManager] public string GetDefaultParkedVehicleName(ushort parkedID)
+[VehicleManager] public string GetDefaultVehicleName(ushort vehicleID)
+[VehicleManager] public string GetParkedVehicleName(ushort parkedID)
+[VehicleManager] public string GetVehicleName(ushort vehicleID)
+[VehicleManager] public Texture2D m_lodAciAtlas;
+[VehicleManager] public Texture2D m_lodRgbAtlas;
+[VehicleManager] public Texture2D m_lodXysAtlas;
+[VehicleManager] public uint cityVehicleCount => m_finalVehicleCount >> 4;
+[VehicleManager] public uint m_finalVehicleCount;
+[VehicleManager] public uint m_lastTrafficFlow;
+[VehicleManager] public uint m_maxTrafficFlow;
+[VehicleManager] public uint m_tempVehicleCount;
+[VehicleManager] public uint m_totalTrafficFlow;
+[VehicleManager] public ulong[] m_updatedParked;
+[VehicleManager] public ushort[] m_parkedGrid;
+[VehicleManager] public ushort[] m_vehicleGrid;
+[VehicleManager] public ushort[] m_vehicleGrid2;
+[VehicleManager] public VehicleInfo GetRandomVehicleInfo(ref Randomizer r, ItemClass.Service service, ItemClass.SubService subService, ItemClass.Level level)
+[VehicleManager] public VehicleInfo GetRandomVehicleInfo(ref Randomizer r, ItemClass.Service service, ItemClass.SubService subService, ItemClass.Level level, VehicleInfo.VehicleType type)
+[VehicleManager] public void AddToGrid(ushort parked, ref VehicleParked data)
+[VehicleManager] public void AddToGrid(ushort parked, ref VehicleParked data, int gridX, int gridZ)
+[VehicleManager] public void AddToGrid(ushort vehicle, ref Vehicle data, bool large)
+[VehicleManager] public void AddToGrid(ushort vehicle, ref Vehicle data, bool large, int gridX, int gridZ)
+[VehicleManager] public void AfterDeserialize(DataSerializer s)
+[VehicleManager] public void AirlineModified()
+[VehicleManager] public void Deserialize(DataSerializer s)
+[VehicleManager] public void RefreshTransferVehicles()
+[VehicleManager] public void ReleaseParkedVehicle(ushort parked)
+[VehicleManager] public void ReleaseVehicle(ushort vehicle)
+[VehicleManager] public void RemoveFromGrid(ushort parked, ref VehicleParked data)
+[VehicleManager] public void RemoveFromGrid(ushort parked, ref VehicleParked data, int gridX, int gridZ)
+[VehicleManager] public void RemoveFromGrid(ushort vehicle, ref Vehicle data, bool large)
+[VehicleManager] public void RemoveFromGrid(ushort vehicle, ref Vehicle data, bool large, int gridX, int gridZ)
+[VehicleManager] public void Serialize(DataSerializer s)
+[VehicleManager] public void UpdateParkedVehicles(float minX, float minZ, float maxX, float maxZ)
+[WarehouseAI] protected override bool CanEvacuate()
+[WarehouseAI] protected override string GetLocalizedStatusActive(ushort buildingID, ref Building data)
+[WarehouseAI] protected override void HandleWorkAndVisitPlaces(ushort buildingID, ref Building buildingData, ref Citizen.BehaviourData behaviour, ref int aliveWorkerCount, ref int totalWorkerCount, ref int workPlaceCount, ref int aliveVisitorCount, ref int totalVisitorCount, ref int visitPlaceCount)
+[WarehouseAI] protected override void ManualActivation(ushort buildingID, ref Building buildingData)
+[WarehouseAI] protected override void ManualDeactivation(ushort buildingID, ref Building buildingData)
+[WarehouseAI] protected override void ProduceGoods(ushort buildingID, ref Building buildingData, ref Building.Frame frameData, int productionRate, int finalProductionRate, ref Citizen.BehaviourData behaviour, int aliveWorkerCount, int totalWorkerCount, int workPlaceCount, int aliveVisitorCount, int totalVisitorCount, int visitPlaceCount)
+[WarehouseAI] protected override void SimulationStepActive(ushort buildingID, ref Building buildingData, ref Building.Frame frameData)
+[WarehouseAI] public bool HasStation()
+[WarehouseAI] public float m_noiseRadius = 100f;
+[WarehouseAI] public float m_pollutionRadius = 150f;
+[WarehouseAI] public int m_animalCount = 3;
+[WarehouseAI] public int m_noiseAccumulation = 50;
+[WarehouseAI] public int m_pollutionAccumulation;
+[WarehouseAI] public int m_storageCapacity = 1000000;
+[WarehouseAI] public int m_truckCount = 30;
+[WarehouseAI] public int m_workPlaceCount0 = 2;
+[WarehouseAI] public int m_workPlaceCount1 = 2;
+[WarehouseAI] public int m_workPlaceCount2 = 1;
+[WarehouseAI] public int m_workPlaceCount3;
+[WarehouseAI] public ManualMilestone m_fullPassMilestone;
+[WarehouseAI] public override bool CanBeEmptied()
+[WarehouseAI] public override bool CanBeEmptied(ushort buildingID, ref Building data)
+[WarehouseAI] public override bool CanBeRelocated(ushort buildingID, ref Building data, out string tooltip)
+[WarehouseAI] public override bool GetUseServicePoint(ushort buildingAI, ref Building data)
+[WarehouseAI] public override bool IsFull(ushort buildingID, ref Building data)
+[WarehouseAI] public override bool RequireRoadAccess()
+[WarehouseAI] public override Color GetColor(ushort buildingID, ref Building data, InfoManager.InfoMode infoMode, InfoManager.SubInfoMode subInfoMode)
+[WarehouseAI] public override ImmaterialResourceManager.ResourceData[] GetImmaterialResourceRadius(ushort buildingID, ref Building data)
+[WarehouseAI] public override int GetResourceRate(ushort buildingID, ref Building data, ImmaterialResourceManager.Resource resource)
+[WarehouseAI] public override int GetResourceRate(ushort buildingID, ref Building data, NaturalResourceManager.Resource resource)
+[WarehouseAI] public override string GetDebugString(ushort buildingID, ref Building data)
+[WarehouseAI] public override string GetLocalizedStats(ushort buildingID, ref Building data)
+[WarehouseAI] public override string GetLocalizedTooltip()
+[WarehouseAI] public override VehicleInfo.VehicleCategory GetRequiredVehicleAccess(ushort buildingAI, ref Building data)
+[WarehouseAI] public override void BuildingDeactivated(ushort buildingID, ref Building data)
+[WarehouseAI] public override void BuildingLoaded(ushort buildingID, ref Building data, uint version)
+[WarehouseAI] public override void CalculateGuestVehicles(ushort buildingID, ref Building data, TransferManager.TransferReason material, ref int count, ref int cargo, ref int capacity, ref int outside)
+[WarehouseAI] public override void CalculateSpawnPosition(ushort buildingID, ref Building data, ref Randomizer randomizer, CitizenInfo info, out Vector3 position, out Vector3 target)
+[WarehouseAI] public override void CalculateUnspawnPosition(ushort buildingID, ref Building data, ref Randomizer randomizer, CitizenInfo info, ushort ignoreInstance, out Vector3 position, out Vector3 target, out Vector2 direction, out CitizenInstance.Flags specialFlags)
+[WarehouseAI] public override void CheckRoadAccess(ushort buildingID, ref Building data)
+[WarehouseAI] public override void CreateBuilding(ushort buildingID, ref Building data)
+[WarehouseAI] public override void EndRelocating(ushort buildingID, ref Building data)
+[WarehouseAI] public override void GetNaturalResourceRadius(ushort buildingID, ref Building data, out NaturalResourceManager.Resource resource1, out Vector3 position1, out float radius1, out NaturalResourceManager.Resource resource2, out Vector3 position2, out float radius2)
+[WarehouseAI] public override void GetPlacementInfoMode(out InfoManager.InfoMode mode, out InfoManager.SubInfoMode subMode, float elevation)
+[WarehouseAI] public override void GetPollutionAccumulation(out int ground, out int noise)
+[WarehouseAI] public override void InitializePrefab()
+[WarehouseAI] public override void ModifyMaterialBuffer(ushort buildingID, ref Building data, TransferManager.TransferReason material, ref int amountDelta)
+[WarehouseAI] public override void PlacementSucceeded()
+[WarehouseAI] public override void ReleaseBuilding(ushort buildingID, ref Building data)
+[WarehouseAI] public override void SetEmptying(ushort buildingID, ref Building data, bool emptying)
+[WarehouseAI] public override void SetFilling(ushort buildingID, ref Building data, bool filling)
+[WarehouseAI] public override void SimulationStep(ushort buildingID, ref Building buildingData, ref Building.Frame frameData)
+[WarehouseAI] public override void StartTransfer(ushort buildingID, ref Building data, TransferManager.TransferReason material, TransferManager.TransferOffer offer)
+[WarehouseAI] public static VehicleInfo GetTransferVehicleService(TransferManager.TransferReason material, ItemClass.Level level, ref Randomizer randomizer)
+[WarehouseAI] public TransferManager.TransferReason GetActualTransferReason(ushort buildingID, ref Building data)
+[WarehouseAI] public TransferManager.TransferReason GetTransferReason(ushort buildingID, ref Building data)
+[WarehouseAI] public TransferManager.TransferReason m_storageType = TransferManager.TransferReason.None;
+[WarehouseAI] public void SetTransferReason(ushort buildingID, ref Building data, TransferManager.TransferReason material)

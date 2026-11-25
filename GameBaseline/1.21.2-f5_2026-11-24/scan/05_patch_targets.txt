@@ -1,0 +1,25 @@
+﻿INFO    IndustrialBuildingAI.StartTransfer Kopf: .method public hidebysig virtual instance void StartTransfer (uint16 buildingID, valuetype Building& data, valuetype TransferManager/TransferReason material, valuetype TransferManager/TransferOffer offer) cil managed
+OK      IndustrialBuildingAI.StartTransfer  Signatur + statisch=False
+OK      IndustrialBuildingAI.StartTransfer  1 x GetRandomVehicleInfo (ersetzt der Transpiler)
+INFO    IndustrialExtractorAI.StartTransfer Kopf: .method public hidebysig virtual instance void StartTransfer (uint16 buildingID, valuetype Building& data, valuetype TransferManager/TransferReason material, valuetype TransferManager/TransferOffer offer) cil managed
+OK      IndustrialExtractorAI.StartTransfer  Signatur + statisch=False
+OK      IndustrialExtractorAI.StartTransfer  1 x GetRandomVehicleInfo (ersetzt der Transpiler)
+INFO    OutsideConnectionAI.StartConnectionTransferImpl Kopf: .method private hidebysig static bool StartConnectionTransferImpl (uint16 buildingID, valuetype Building& data, valuetype TransferManager/TransferReason material, valuetype TransferManager/TransferOffer offer, int32 touristFactor0, int32 touristFactor1, int32 touristFactor2) cil managed
+OK      OutsideConnectionAI.StartConnectionTransferImpl  Signatur + statisch=True
+OK      OutsideConnectionAI.StartConnectionTransferImpl  19 x GetRandomVehicleInfo (ersetzt der Transpiler)
+INFO    WarehouseAI.StartTransfer Kopf: .method public hidebysig virtual instance void StartTransfer (uint16 buildingID, valuetype Building& data, valuetype TransferManager/TransferReason material, valuetype TransferManager/TransferOffer offer) cil managed
+OK      WarehouseAI.StartTransfer  Signatur + statisch=False
+OK      WarehouseAI.StartTransfer  1 x GetTransferVehicleService (ersetzt der Transpiler)
+INFO    CargoTruckAI.ChangeVehicleType Kopf: .method family hidebysig virtual instance bool ChangeVehicleType (uint16 vehicleID, valuetype Vehicle& vehicleData, valuetype PathUnit/Position pathPos, uint32 laneID) cil managed
+INFO    CargoTruckAI.ChangeVehicleType Kopf: .method public hidebysig static bool ChangeVehicleType (class VehicleInfo vehicleInfo, uint16 vehicleID, valuetype Vehicle& vehicleData, valuetype PathUnit/Position pathPos, uint32 laneID) cil managed
+OK      CargoTruckAI.ChangeVehicleType  Signatur + statisch=True
+OK      CargoTruckAI.ChangeVehicleType  1 x GetRandomVehicleInfo (ersetzt der Transpiler)
+OK      CargoTruckAI.ChangeVehicleType  lokale Variable [6] ist uint16
+OK      CargoTruckAI.ChangeVehicleType  lokale Variable [7] ist uint16
+OK      CargoTruckAI.ChangeVehicleType  FindCargoStation -> stloc.s 6 (Start), stloc.s 7 (Ziel)
+INFO    VehicleManager.RefreshTransferVehicles Kopf: .method public hidebysig instance void RefreshTransferVehicles () cil managed
+OK      VehicleManager.RefreshTransferVehicles  Signatur + statisch=False
+INFO    CargoTruckAI.StartTransfer Kopf: .method public hidebysig virtual instance void StartTransfer (uint16 vehicleID, valuetype Vehicle& data, valuetype TransferManager/TransferReason material, valuetype TransferManager/TransferOffer offer) cil managed
+OK      CargoTruckAI.StartTransfer  Signatur + statisch=False
+OK      CargoTruckAI.StartTransfer  1 x SetTarget (neues Ziel, das der NBT-Prefix vorher prueft)
+OK      CargoTruckAI.StartTransfer  prueft Vehicle.Flags.WaitingTarget (524288)
