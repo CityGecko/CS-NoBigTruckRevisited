@@ -43,7 +43,8 @@ NEW = {
         "AVO_MISSING": "No Big Truck Revisited: Advanced Vehicle Options is not enabled. Vehicles are marked as \"Large Vehicle\" in Advanced Vehicle Options; without it, this mod has nothing to filter.",
         "WHATSNEW_2_0_0_1": "No Big Truck Revisited continues No Big Truck by MacSergey for game version 1.21.",
         "WHATSNEW_2_0_0_2": "Your existing rules are kept.",
-        "WHATSNEW_2_0_0_3": "New target type Wall-to-wall.",
+        "TARGET_WALLTOWALL_TOOLTIP": "Commercial buildings in districts with the \"Wall-to-Wall\" district specialization (Plazas & Promenades DLC): high-density shop rows built without gaps. Asset names start with MCW2W.",
+        "WHATSNEW_2_0_0_3": "New target type Wall-to-wall (district specialization of the Plazas & Promenades DLC).",
         "WHATSNEW_2_0_0_5": "New options page: one group of checkboxes per rule; every change is saved immediately and shown next to the rule (\"Saved at ...\").",
         "WHATSNEW_2_0_0_6": "Works together with Vehicle Selector: where Vehicle Selector chooses the vehicles, it takes precedence. No Big Truck still filters deliveries from outside connections and keeps large trucks from being redirected to small shops.",
         "STATUS_SAVED": "Saved at {0} ({1})",
@@ -62,7 +63,8 @@ NEW = {
         "AVO_MISSING": "No Big Truck Revisited: Advanced Vehicle Options ist nicht aktiv. Fahrzeuge werden in Advanced Vehicle Options als \"Large Vehicle\" markiert; ohne diesen Mod hat No Big Truck nichts zu filtern.",
         "WHATSNEW_2_0_0_1": "No Big Truck Revisited führt No Big Truck von MacSergey für Spielversion 1.21 weiter.",
         "WHATSNEW_2_0_0_2": "Deine bestehenden Regeln bleiben erhalten.",
-        "WHATSNEW_2_0_0_3": "Neuer Zieltyp Wall-to-Wall.",
+        "TARGET_WALLTOWALL_TOOLTIP": "Gewerbe in Bezirken mit der Bezirks-Spezialisierung \"Wall-to-Wall\" (DLC Plazas & Promenades): lückenlos aneinandergebaute Ladenzeilen hoher Dichte. Assetnamen beginnen mit MCW2W.",
+        "WHATSNEW_2_0_0_3": "Neuer Zieltyp Wall-to-Wall (Bezirks-Spezialisierung aus dem DLC Plazas & Promenades).",
         "WHATSNEW_2_0_0_5": "Neue Optionsseite: je Regel eine Gruppe mit Checkboxen; jede Änderung wird sofort gespeichert und neben der Regel angezeigt (\"Gespeichert um ...\").",
         "WHATSNEW_2_0_0_6": "Arbeitet mit Vehicle Selector zusammen: Wo Vehicle Selector die Fahrzeuge wählt, hat es Vorrang. No Big Truck filtert weiterhin Lieferungen von Außenverbindungen und verhindert, dass große LKW zu kleinen Läden umgeleitet werden.",
         "STATUS_SAVED": "Gespeichert um {0} ({1})",
@@ -112,7 +114,8 @@ def main():
         out = os.path.join(DST, code + ".csv")
         with open(out, "w", encoding="utf-8-sig", newline="\r\n") as f:
             f.write(quote("LANGUAGE") + "," + quote(LANGUAGE_NAMES.get(code, code)) + "\n")
-            for key in list(KEYS.values()) + list(NEW["en-EN"].keys()):
+            # each key once, in a stable order (a NEW entry may override a converted resx text)
+            for key in dict.fromkeys(list(KEYS.values()) + list(NEW["en-EN"].keys())):
                 if key in values:
                     f.write(quote(key) + "," + quote(values[key]) + "\n")
         print(code, len(values), "->", os.path.relpath(out, ROOT))
