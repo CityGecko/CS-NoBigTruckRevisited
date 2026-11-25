@@ -354,3 +354,6 @@ GameBaseline/*/dll/
 GameBaseline/*/scan/src/
 GameBaseline/*/scan/il/
 GameBaseline/*/scan/*_changes.patch
+
+# Test/release packages
+dist/
