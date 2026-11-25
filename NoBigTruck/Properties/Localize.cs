@@ -119,5 +119,15 @@ namespace NoBigTruck
 		/// Tourist
 		/// </summary>
 		public static string TargetTourist => LocaleManager.GetString("TargetTourist", Culture);
+
+		/// <summary>
+		/// Wall-to-wall
+		/// </summary>
+		public static string TargetWallToWall => LocaleManager.GetString("TargetWallToWall", Culture);
+
+		/// <summary>
+		/// Tooltip for the Wall-to-wall target type
+		/// </summary>
+		public static string TargetWallToWall_Tooltip => LocaleManager.GetString("TargetWallToWall_Tooltip", Culture);
 	}
 }

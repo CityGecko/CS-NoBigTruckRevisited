@@ -118,6 +118,20 @@ namespace NoBigTruck
                 return GetRandomVehicleInfo(Singleton<VehicleManager>.instance, ref randomizer, vehicleInfo.GetService(), vehicleInfo.GetSubService(), level, targetBuildingId, sourceBuildingId, material);
         }
 
+        public static bool IsRestrictedTarget(ushort sourceBuildingId, ushort targetBuildingId)
+        {
+            if (sourceBuildingId == 0 || targetBuildingId == 0 || GetBuildingInfo(sourceBuildingId)?.m_class == null || GetBuildingInfo(targetBuildingId)?.m_class == null)
+                return false;
+#if DEBUG
+            var log = $"\n\tRefuse new target for large vehicle? source={sourceBuildingId}; target={targetBuildingId};";
+            var result = CheckRules(sourceBuildingId, targetBuildingId, ref log);
+            SingletonMod<Mod>.Logger.Debug(log + $"\n\t{(result ? "Refused" : "Allowed")}");
+            return result;
+#else
+            return CheckRules(sourceBuildingId, targetBuildingId);
+#endif
+        }
+
 #if DEBUG
         public static bool CheckRules(ushort sourceBuildingId, ushort targetBuildingId, ref string log)
 #else
@@ -170,6 +184,7 @@ namespace NoBigTruck
                 { m_subService: ItemClass.SubService.CommercialEco } => TargetBuildingTypes.Eco,
                 { m_subService: ItemClass.SubService.CommercialLeisure } => TargetBuildingTypes.Leisure,
                 { m_subService: ItemClass.SubService.CommercialTourist } => TargetBuildingTypes.Tourist,
+                { m_subService: ItemClass.SubService.CommercialWallToWall } => TargetBuildingTypes.WallToWall,
                 { m_service: ItemClass.Service.Road } or { m_service: ItemClass.Service.PublicTransport} => TargetBuildingTypes.Outside,
                 { m_service: ItemClass.Service.PlayerIndustry } => TargetBuildingTypes.Warehouse,
                 { m_service: ItemClass.Service.Industrial } => TargetBuildingTypes.Industry,

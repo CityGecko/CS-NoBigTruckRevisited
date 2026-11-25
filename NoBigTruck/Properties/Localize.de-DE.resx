@@ -177,4 +177,10 @@
   <data name="TargetTourist" xml:space="preserve">
     <value>Tourismus</value>
   </data>
+  <data name="TargetWallToWall" xml:space="preserve">
+    <value>Wall-to-Wall</value>
+  </data>
+  <data name="TargetWallToWall_Tooltip" xml:space="preserve">
+    <value>Gewerbe in Bezirken mit der Bezirks-Spezialisierung „Wall-to-Wall“: lückenlos aneinandergebaute Ladenzeilen hoher Dichte. Assetnamen beginnen mit MCW2W.</value>
+  </data>
 </root>

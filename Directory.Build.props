@@ -1,0 +1,6 @@
+<Project>
+  <!-- Local build helper (not part of No Big Truck): net35 reference assemblies without the targeting pack. -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+  </ItemGroup>
+</Project>

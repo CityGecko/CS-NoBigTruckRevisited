@@ -7,6 +7,7 @@
 		<LangVersion>9.0</LangVersion>
 		<ManagedDLLPath>$(MSBuildProgramFiles32)/Steam/steamapps/common/Cities_Skylines/Cities_Data/Managed</ManagedDLLPath>
 		<ExternalDLLPath>$(SolutionDir)/libs</ExternalDLLPath>
+		<XmlLinqDLLPath Condition="'$(XmlLinqDLLPath)' == ''">$(MSBuildProgramFiles32)\Reference Assemblies\Microsoft\Framework\v3.5\System.Xml.Linq.dll</XmlLinqDLLPath>
 		<AssemblySearchPaths>
 			$(AssemblySearchPaths);
 			$(ManagedDLLPath);
@@ -15,12 +16,20 @@
 		<Configurations>Beta Debug;Beta Release;Stable Debug;Stable Release</Configurations>
 	</PropertyGroup>
 
+	<!-- Do not ship satellite assemblies of System.Xml.Linq from a localized .NET Framework install (e.g. de\System.Xml.Linq.resources.dll). -->
+	<Target Name="DropReferenceSatellites" AfterTargets="ResolveAssemblyReferences">
+		<ItemGroup>
+			<ReferenceCopyLocalPaths Remove="@(ReferenceSatellitePaths)" />
+			<ReferenceSatellitePaths Remove="@(ReferenceSatellitePaths)" />
+		</ItemGroup>
+	</Target>
+
 	<PropertyGroup>
-		<AssemblyVersion>1.3.0.32</AssemblyVersion>
+		<AssemblyVersion>1.3.2.0</AssemblyVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)' == 'Stable Release' OR '$(Configuration)' == 'Stable Debug'">
-		<AssemblyVersion>1.3.0.6</AssemblyVersion>
+		<AssemblyVersion>1.3.2.0</AssemblyVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Stable Release|AnyCPU'">
@@ -68,6 +77,8 @@
 			<Private>false</Private>
 		</Reference>
 		<Reference Include="System.Xml.Linq">
+			<!-- Must be the real .NET 3.5 implementation: it is shipped with the mod. A reference assembly (e.g. from Microsoft.NETFramework.ReferenceAssemblies) has empty method bodies and crashes in game. -->
+			<HintPath>$(XmlLinqDLLPath)</HintPath>
 			<Private>true</Private>
 		</Reference>
 		<EmbeddedResource Remove="Properties\Localize.cs-CZ.resx" />
@@ -242,7 +253,7 @@
 		<Copy SourceFiles="@(FilesToCopy)" DestinationFiles="@(FilesToCopy->'$(LocalDir)\%(RecursiveDir)%(Filename)%(Extension)')" />
 	</Target>
 
-	<Target Name="DeployToWorkshop" AfterTargets="PdbToMdb" Condition="'$(Configuration)' == 'Stable Release' OR '$(Configuration)' == 'Beta Release'">
+	<Target Name="DeployToWorkshop" AfterTargets="PdbToMdb" Condition="'$(DeployToWorkshop)' == 'true' AND ('$(Configuration)' == 'Stable Release' OR '$(Configuration)' == 'Beta Release')">
 		<Message Text="Deploy to workshop $(WorkshopDir)" Importance="high" />
 		<RemoveDir Directories="$(WorkshopDir)" />
 		<Copy SourceFiles="@(FilesToCopy)" DestinationFiles="@(FilesToCopy->'$(WorkshopDir)\%(RecursiveDir)%(Filename)%(Extension)')" />

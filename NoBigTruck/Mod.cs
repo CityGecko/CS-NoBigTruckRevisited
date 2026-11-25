@@ -23,6 +23,7 @@ namespace NoBigTruck
 
         public override List<ModVersion> Versions { get; } = new List<ModVersion>
         {
+            new ModVersion(new Version("1.3.2"), new DateTime(2026, 11, 24)),
             new ModVersion(new Version("1.3"), new DateTime(2022, 9, 14)),
             new ModVersion(new Version("1.2.4"), new DateTime(2021, 8, 22)),
             new ModVersion(new Version("1.2.3"), new DateTime(2021, 8, 7)),
@@ -33,7 +34,7 @@ namespace NoBigTruck
             new ModVersion(new Version("1.0"), new DateTime(2020, 6, 19)),
         };
 
-        protected override Version RequiredGameVersion => new Version(1, 21, 1, 9);
+        protected override Version RequiredGameVersion => new Version(1, 21, 2, 5);
 
 #if BETA
         public override bool IsBeta => true;
@@ -84,6 +85,7 @@ namespace NoBigTruck
             success &= WarehouseAI_StartTransfer_Patch();
             success &= CargoTruckAI_ChangeVehicleType_Patch();
             success &= VehicleManager_RefreshTransferVehicles_Patch();
+            success &= CargoTruckAI_StartTransfer_Patch();
 
             if (AVO is null)
                 Logger.Debug("Advanced Vehicle Options not exist, skip patches");
@@ -112,6 +114,10 @@ namespace NoBigTruck
         private bool CargoTruckAI_ChangeVehicleType_Patch()
         {
             return AddTranspiler(typeof(Patcher), nameof(Patcher.CargoTruckAI_ChangeVehicleType_Transpiler), typeof(CargoTruckAI), nameof(CargoTruckAI.ChangeVehicleType), new Type[] { typeof(VehicleInfo), typeof(ushort), typeof(Vehicle).MakeByRefType(), typeof(PathUnit.Position), typeof(uint) });
+        }
+        private bool CargoTruckAI_StartTransfer_Patch()
+        {
+            return AddPrefix(typeof(Patcher), nameof(Patcher.CargoTruckAI_StartTransfer_Prefix), typeof(CargoTruckAI), nameof(CargoTruckAI.StartTransfer), new Type[] { typeof(ushort), typeof(Vehicle).MakeByRefType(), typeof(TransferManager.TransferReason), typeof(TransferManager.TransferOffer) });
         }
         private bool VehicleManager_RefreshTransferVehicles_Patch()
         {
@@ -202,6 +208,24 @@ namespace NoBigTruck
                 else
                     yield return instruction;
             }
+        }
+
+        // A loaded cargo truck that lost its target (rest of the load after a partial delivery, arrival from a
+        // cargo train/ship at the destination station, target gone) offers itself to the TransferManager and
+        // gets a new target here - no vehicle is selected, so the GetRandomVehicleInfo patches never see it.
+        // Large vehicles must not be sent to buildings covered by a rule: the target is refused, the truck keeps
+        // waiting and, as in vanilla when no target is found, returns with its load after a short time.
+        // No new offer is added here on purpose: this runs inside TransferManager's matching loop.
+        public static bool CargoTruckAI_StartTransfer_Prefix(ushort vehicleID, ref Vehicle data, TransferManager.TransferReason material, TransferManager.TransferOffer offer)
+        {
+            if (material != TransferManager.TransferReason.Goods || material != (TransferManager.TransferReason)data.m_transferType || (data.m_flags & Vehicle.Flags.WaitingTarget) == 0)
+                return true;
+
+            var info = data.Info;
+            if (info == null || !info.m_isLargeVehicle)
+                return true;
+
+            return !Manager.IsRestrictedTarget(data.m_sourceBuilding, offer.Building);
         }
 
         public static bool NBTCheckPrefix(ref bool __result)

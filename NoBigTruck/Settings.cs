@@ -295,6 +295,9 @@ namespace NoBigTruck
         [Description(nameof(Localize.TargetTourist))]
         Tourist = 16,
 
+        [Description(nameof(Localize.TargetWallToWall))]
+        WallToWall = 512,
+
         [NotVisible]
         Industry = 32,
 
@@ -308,7 +311,7 @@ namespace NoBigTruck
         Disaster = 256,
 
         [NotVisible]
-        All = Low | High | Eco | Leisure | Tourist,
+        All = Low | High | Eco | Leisure | Tourist | WallToWall,
     }
 
     public class SourceBuildingPropertyPanel : EnumMultyPropertyPanel<SourceBuildingTypes, SourceBuildingPropertyPanel.SourceBuildingSegmented>
@@ -323,7 +326,22 @@ namespace NoBigTruck
         protected override string GetDescription(TargetBuildingTypes value) => value.Description<TargetBuildingTypes, Mod>();
         protected override bool IsEqual(TargetBuildingTypes first, TargetBuildingTypes second) => first == second;
 
-        public class TargetBuildingSegmented : UIMultySegmented<TargetBuildingTypes> { }
+        protected override void FillItems(Func<TargetBuildingTypes, bool> selector)
+        {
+            base.FillItems(selector);
+            Selector.SetTooltip(TargetBuildingTypes.WallToWall, NoBigTruck.Localize.TargetWallToWall_Tooltip);
+        }
+
+        public class TargetBuildingSegmented : UIMultySegmented<TargetBuildingTypes>
+        {
+            // ModsCommon sets tooltips only for icon buttons, text buttons get them here.
+            public void SetTooltip(TargetBuildingTypes value, string text)
+            {
+                var index = Objects.IndexOf(value);
+                if (index >= 0 && index < Buttons.Count)
+                    Buttons[index].tooltip = text;
+            }
+        }
     }
     public class AddRuleButton : ButtonPanel
     {
