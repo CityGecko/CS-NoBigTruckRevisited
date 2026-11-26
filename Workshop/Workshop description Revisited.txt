@@ -66,3 +66,6 @@ Source code (MIT license): [url=https://github.com/CityGecko/CS-NoBigTruckRevisi
 [*][b]algernon[/b] - AlgernonCommons (MIT)
 [*]Translators of the original mod and of this version (Crowdin)
 [/list]
+
+[h2]AI Disclaimer[/h2]
+With release of No Big Truck Revisited 2.0.0, parts of this mod have been co-authored by Anthropic Claude. All commits are reviewed, confirmed and tested by myself on my own machine/in my local environment.

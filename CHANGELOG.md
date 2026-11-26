@@ -3,6 +3,8 @@
 Continuation of No Big Truck by MacSergey (MIT). Game version 1.21.2-f5.
 Steam Workshop: https://steamcommunity.com/sharedfiles/filedetails/?id=3846463309
 
+**AI Disclaimer:** With release of No Big Truck Revisited 2.0.0, parts of this mod have been co-authored by Anthropic Claude. All commits are reviewed, confirmed and tested by myself on my own machine/in my local environment.
+
 ## 2.0.0 (2026-11-26, Steam Workshop 3846463309)
 
 **New base**
