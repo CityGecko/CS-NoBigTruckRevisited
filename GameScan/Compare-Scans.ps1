@@ -75,7 +75,7 @@ foreach ($sub in @(@('src', '*.cs.txt', 'Dekompilierter Quelltext'), @('il', '*.
         $prev = $ErrorActionPreference; $ErrorActionPreference = 'Continue'
         try { & $git.Source diff --no-index --no-color -U3 -- $oldDir $newDir 2>$null | Set-Content -Path $patch -Encoding UTF8 }
         finally { $ErrorActionPreference = $prev }
-        $body.Add("Vollstaendiger Diff: $patch")
+        $body.Add("Vollstaendiger Diff: " + (Split-Path -Leaf $patch) + " (im neuen Scan-Ordner)")
     }
     if ($removed.Count -eq 0 -and $added.Count -eq 0 -and $changed.Count -eq 0) { $body.Add('Keine Unterschiede.') }
 }

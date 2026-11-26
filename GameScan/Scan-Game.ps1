@@ -111,7 +111,8 @@ try {
     }
     $info = @()
     $info += "Scan-Zeitpunkt      : $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"
-    $info += "AssemblyDir         : $AssemblyDir"
+    # User profile path replaced, so the scan files can be shared (they are committed to the repository).
+    $info += "AssemblyDir         : " + ($AssemblyDir -replace [regex]::Escape($env:USERPROFILE), '%USERPROFILE%')
     $info += ('Spielversion       : {0}.{1}.{2}-f{3}  (Release-Typ {4})' -f (Get-Const $bc 'APPLICATION_VERSION_A'), (Get-Const $bc 'APPLICATION_VERSION_B'), (Get-Const $bc 'APPLICATION_VERSION_C'), (Get-Const $bc 'APPLICATION_BUILD_NUMBER'), (Get-Const $bc 'APPLICATION_RELEASE_TYPE'))
     $info += 'DATA_FORMAT_VERSION  : ' + (Get-Const $bc 'DATA_FORMAT_VERSION')
     $info += 'SAVE_DATA_FORMAT    : ' + (Get-Const $bc 'SAVE_DATA_FORMAT_VERSION')
