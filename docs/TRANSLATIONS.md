@@ -17,7 +17,7 @@ maßgebliche Stand; das Skript nicht mehr laufen lassen, es würde Crowdin-Über
    Chinese Simplified, Chinese Traditional, Indonesian (und gern weitere).
    Für Open-Source-Projekte ist Crowdin kostenlos (Antrag „Open Source“ im Projekt bzw. auf crowdin.com/page/open-source-project-setup-request).
 2. Im Projekt: **Integrations → GitHub** → mit dem GitHub-Konto verbinden → Repository
-   `CityGecko/NoBigTruckRevisited` → Branch **dev/2.0** wählen.
+   `CityGecko/CS-NoBigTruckRevisited` → Branch **dev/2.0** wählen.
 3. Beim Einrichten **„Upload existing translations“** (vorhandene Übersetzungen hochladen) aktivieren.
    Die Konfiguration kommt aus `crowdin.yml`; Service-Branch-Name z. B. `l10n_dev/2.0`.
 4. Crowdin liest dann `en-EN.csv` als Quelle und die 21 Sprachdateien als vorhandene Übersetzungen.

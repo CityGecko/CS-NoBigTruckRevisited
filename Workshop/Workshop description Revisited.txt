@@ -40,7 +40,7 @@ The mod does not change savegames and can be enabled or disabled at any time.
 Please describe the problem in detail and always attach your output_log.txt - reports without a log cannot be investigated. The log contains a line "No Big Truck Revisited: Harmony patches: ... applied, ... failed" that helps a lot.
 
 [h2]Source code and credits[/h2]
-Source code (MIT license): [url=https://github.com/CityGecko/NoBigTruckRevisited]GitHub[/url]
+Source code (MIT license): [url=https://github.com/CityGecko/CS-NoBigTruckRevisited]GitHub[/url]
 [list]
 [*][b]MacSergey[/b] - original No Big Truck
 [*][b]Will[/b] - update for game versions 1.20/1.21 and Vehicle Selector compatibility
