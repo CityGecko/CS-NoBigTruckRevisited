@@ -1,3 +1,6 @@
+# ONE-TIME MIGRATION (done 26.11.2026). Since then the CSV files are maintained via Crowdin (see docs/TRANSLATIONS.md).
+# Do NOT run this script again: it rewrites NoBigTruck/Translations/*.csv and would drop Crowdin translations.
+#
 # Source: tools/legacy-resx = Localize*.resx from Will's branch "workshop" (will258012/NoBigTruck, Crowdin state
 # incl. Thai and Ukrainian) plus Vietnamese from MacSergey's branch "Translation" (Aug 2024).
 # Converts the No Big Truck 1.x translations (Properties/Localize*.resx, community translations via Crowdin,
