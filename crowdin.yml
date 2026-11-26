@@ -4,8 +4,9 @@
 files:
   - source: /NoBigTruck/Translations/en-EN.csv
     translation: /NoBigTruck/Translations/%locale%.csv
-    # Column 1 = key, column 2 = text. In the language files column 2 is the translation.
-    scheme: "identifier,source_phrase"
+    # Column 1 = key, column 2 = text: the English text in en-EN.csv, the translation in the language files.
+    # Crowdin needs both a source and a translation column; "source_or_translation" is one column for both.
+    scheme: "identifier,source_or_translation"
     first_line_contains_header: false
     # Untranslated texts are left out, so the mod falls back to English for them.
     skip_untranslated_strings: true
