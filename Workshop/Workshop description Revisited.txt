@@ -1,15 +1,30 @@
 [h1]No Big Truck Revisited[/h1]
 Big trucks don't deliver goods to small shops.
 
-Continuation of [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2069057130]No Big Truck[/url] by MacSergey, which is no longer maintained. Updated for game version 1.21.2-f5, including the 1.20/1.21 fixes by Will.
+If you want more realism in which vehicles deliver goods to your shops, this mod helps: only small vans are sent to your small shops, so no more semi-trailers squeezing through narrow streets and making impossible turns.
+
+Continuation of [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2069057130]No Big Truck[/url] by MacSergey, who no longer actively maintains mods due to time constraints. Updated for game version 1.21.2-f5, including the 1.20/1.21 fixes by Will.
 
 [b]Please unsubscribe or disable all other versions of No Big Truck (original, beta, "Temporary Fix") - only one may be active.[/b]
 
-[h2]What it does[/h2]
-Goods deliveries from the selected source buildings to the selected target buildings only use vehicles that are NOT marked as "Large Vehicle" in [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1548831935]Advanced Vehicle Options[/url]. So the small shop around the corner gets a van instead of a semi-trailer.
+[h2]How it works[/h2]
+The mod looks at the type of the source and the target building of a goods delivery. If both are covered by one of your rules, only vehicles that are NOT marked as "Large Vehicle" in [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1548831935]Advanced Vehicle Options[/url] are used. So the small shop around the corner gets a van instead of a semi-trailer.
 
-[b]Sources:[/b] Industry, Warehouse, Outside connection (incl. cargo stations)
-[b]Targets:[/b] Low, High, Eco, Leisure, Tourist and Wall-to-wall commercial (Wall-to-wall is a district specialization of the Plazas & Promenades DLC)
+[b]Sources[/b]
+[list]
+[*]Industry
+[*]Warehouse
+[*]Outside connection (incl. cargo stations)
+[/list]
+[b]Targets[/b]
+[list]
+[*]Low Commercial
+[*]High Commercial
+[*]Eco Commercial
+[*]Leisure Commercial
+[*]Tourist Commercial
+[*]Wall-to-wall Commercial (district specialization of the Plazas & Promenades DLC)
+[/list]
 
 The mod does not change savegames and can be enabled or disabled at any time.
 
@@ -37,7 +52,11 @@ The mod does not change savegames and can be enabled or disabled at any time.
 [/list]
 
 [h2]Support[/h2]
-Please describe the problem in detail and always attach your output_log.txt - reports without a log cannot be investigated. The log contains a line "No Big Truck Revisited: Harmony patches: ... applied, ... failed" that helps a lot.
+Please describe the problem in as much detail as possible and always attach your output_log.txt - reports without a log cannot be investigated. You find it in the game folder under Cities_Data\output_log.txt (upload it e.g. to pastebin or a cloud drive and post the link). The log contains a line "No Big Truck Revisited: Harmony patches: ... applied, ... failed" that helps a lot.
+Bug reports are also welcome as [url=https://github.com/CityGecko/CS-NoBigTruckRevisited/issues]GitHub issue[/url].
+
+[h2]Translations[/h2]
+Want to improve a translation or add your language? Join the translation project on [url=https://crowdin.com/project/cs-nobigtruckrevisited]Crowdin[/url]. Many texts are machine translations so far - native speakers are very welcome to check them.
 
 [h2]Source code and credits[/h2]
 Source code (MIT license): [url=https://github.com/CityGecko/CS-NoBigTruckRevisited]GitHub[/url]
@@ -45,5 +64,5 @@ Source code (MIT license): [url=https://github.com/CityGecko/CS-NoBigTruckRevisi
 [*][b]MacSergey[/b] - original No Big Truck
 [*][b]Will[/b] - update for game versions 1.20/1.21 and Vehicle Selector compatibility
 [*][b]algernon[/b] - AlgernonCommons (MIT)
-[*]Translators of the original mod (Crowdin)
+[*]Translators of the original mod and of this version (Crowdin)
 [/list]
