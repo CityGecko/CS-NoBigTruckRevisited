@@ -1,4 +1,5 @@
 ﻿"LANGUAGE","English (UK)","Name of YOUR language, written in your language (e.g. Deutsch, Français). Shown in the language selection."
+"MOD_DESCRIPTION","Big trucks don't deliver goods to stores","Short mod description in the game's mod list (Content Manager)."
 "RULES_TITLE","Rules","Heading of the rules section on the options page."
 "ADD_RULE","Add new rule","Button below the rules that adds a new rule."
 "SOURCE","Source buildings type","Label above the checkboxes for the type of building the goods come from."
