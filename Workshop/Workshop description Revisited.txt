@@ -1,0 +1,49 @@
+[h1]No Big Truck Revisited[/h1]
+Big trucks don't deliver goods to small shops.
+
+Continuation of [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2069057130]No Big Truck[/url] by MacSergey, which is no longer maintained. Updated for game version 1.21.2-f5, including the 1.20/1.21 fixes by Will.
+
+[b]Please unsubscribe or disable all other versions of No Big Truck (original, beta, "Temporary Fix") - only one may be active.[/b]
+
+[h2]What it does[/h2]
+Goods deliveries from the selected source buildings to the selected target buildings only use vehicles that are NOT marked as "Large Vehicle" in [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1548831935]Advanced Vehicle Options[/url]. So the small shop around the corner gets a van instead of a semi-trailer.
+
+[b]Sources:[/b] Industry, Warehouse, Outside connection (incl. cargo stations)
+[b]Targets:[/b] Low, High, Eco, Leisure, Tourist and Wall-to-wall commercial (Wall-to-wall is a district specialization of the Plazas & Promenades DLC)
+
+The mod does not change savegames and can be enabled or disabled at any time.
+
+[h2]Settings[/h2]
+[list]
+[*]Mark the trucks you consider large in Advanced Vehicle Options (option "Large Vehicle", shown for generic industry trucks with trailer).
+[*]In the mod options, set up one or more rules: which source and target types, and optionally the maximum lot size (cells) of the target building.
+[*]Every change is saved immediately and confirmed next to the rule ("Saved at ...").
+[/list]
+
+[h2]New in 2.0[/h2]
+[list]
+[*]Your existing No Big Truck rules are kept.
+[*]New options page with checkboxes and save status, language selection.
+[*]New target type Wall-to-wall.
+[*]Fix: large trucks that look for a new target on their way (rest of a load, arrival by cargo train or ship) are no longer sent to small shops.
+[*]Works together with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2882769913]Vehicle Selector[/url]: where Vehicle Selector chooses the vehicles, it takes precedence; No Big Truck still filters deliveries from outside connections and blocks the redirection of large trucks.
+[*]New technical base (AlgernonCommons) instead of ModsCommon.
+[/list]
+
+[h2]Requirements[/h2]
+[list]
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2040656402]Harmony[/url]
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=1548831935]Advanced Vehicle Options[/url]
+[/list]
+
+[h2]Support[/h2]
+Please describe the problem in detail and always attach your output_log.txt - reports without a log cannot be investigated. The log contains a line "No Big Truck Revisited: Harmony patches: ... applied, ... failed" that helps a lot.
+
+[h2]Source code and credits[/h2]
+Source code (MIT license): [url=https://github.com/CityGecko/NoBigTruckRevisited]GitHub[/url]
+[list]
+[*][b]MacSergey[/b] - original No Big Truck
+[*][b]Will[/b] - update for game versions 1.20/1.21 and Vehicle Selector compatibility
+[*][b]algernon[/b] - AlgernonCommons (MIT)
+[*]Translators of the original mod (Crowdin)
+[/list]
