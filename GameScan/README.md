@@ -25,7 +25,7 @@ Ersetzung noch ihr Ziel hat (Signatur/Argument-Indizes, Anzahl der Aufrufe, loka
    .\Compare-Scans.ps1 -Old '..\GameBaseline\1.21.1-f9_2026-10-14\scan' -New '..\GameBaseline\<neue Version>_<Datum>\scan'
    ```
 4. Im Spiel `output_log.txt` prüfen: `No Big Truck Revisited: patched: ...` je Patch und
-   `No Big Truck Revisited: Harmony patches: 9 applied, 0 failed` (ohne AVO: 7 applied und „AVO patches skipped“).
+   `No Big Truck Revisited: Harmony patches: 13 applied, 0 failed` (ohne AVO: 11 applied und „AVO patches skipped“).
    Bis Version 1.3.2 lauteten die Zeilen `[NoBigTruck] ... Success patched!` und `[NoBigTruck] Patch Success`.
 
 ## Dateien eines Scans

@@ -97,8 +97,13 @@ namespace NoBigTruck
         // Large vehicles must not be sent to buildings covered by a rule: the target is refused, the truck keeps
         // waiting and, as in vanilla when no target is found, returns with its load after a short time.
         // No new offer is added here on purpose: this runs inside TransferManager's matching loop.
+        // Not applied while a building dispatches a NEW truck (see DispatchPrefix): there the vehicle selection
+        // (No Big Truck, or Vehicle Selector which takes precedence) has already decided.
         public static bool CargoTruckAI_StartTransfer_Prefix(ushort vehicleID, ref Vehicle data, TransferManager.TransferReason material, TransferManager.TransferOffer offer)
         {
+            if (dispatchDepth > 0)
+                return true;
+
             if (material != TransferManager.TransferReason.Goods || material != (TransferManager.TransferReason)data.m_transferType || (data.m_flags & Vehicle.Flags.WaitingTarget) == 0)
                 return true;
 
@@ -107,6 +112,21 @@ namespace NoBigTruck
                 return true;
 
             return !Manager.IsRestrictedTarget(data.m_sourceBuilding, offer.Building);
+        }
+
+        // > 0 while IndustrialBuildingAI/IndustrialExtractorAI/WarehouseAI.StartTransfer or
+        // OutsideConnectionAI.StartConnectionTransferImpl runs, i.e. while a building creates and sends a new truck.
+        [ThreadStatic]
+        private static int dispatchDepth;
+
+        public static void DispatchPrefix() => dispatchDepth++;
+
+        // Finalizer: runs also if the original method throws, so the counter cannot get stuck.
+        public static Exception DispatchFinalizer(Exception __exception)
+        {
+            if (dispatchDepth > 0)
+                dispatchDepth--;
+            return __exception;
         }
 
         public static bool NBTCheckPrefix(ref bool __result)

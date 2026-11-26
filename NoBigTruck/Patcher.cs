@@ -35,6 +35,12 @@ namespace NoBigTruck
                 Method(typeof(Patches), nameof(Patches.CargoTruckAI_StartTransfer_Prefix)));
             Postfix(harmony, typeof(VehicleManager), nameof(VehicleManager.RefreshTransferVehicles), null, Method(typeof(Manager), nameof(Manager.RefreshTransferVehicles)));
 
+            // Mark "a building is dispatching a new truck", so the rerouting prefix above leaves those trucks alone.
+            Dispatch(harmony, typeof(IndustrialBuildingAI), nameof(IndustrialBuildingAI.StartTransfer));
+            Dispatch(harmony, typeof(IndustrialExtractorAI), nameof(IndustrialExtractorAI.StartTransfer));
+            Dispatch(harmony, typeof(WarehouseAI), nameof(WarehouseAI.StartTransfer));
+            Dispatch(harmony, typeof(OutsideConnectionAI), "StartConnectionTransferImpl");
+
             // Advanced Vehicle Options: refresh the cache when "Large Vehicle" is ticked, and let AVO show that checkbox.
             Type avoPanel = AccessTools.TypeByName("AdvancedVehicleOptionsUID.GUI.UIOptionPanel");
             Type avoCompat = AccessTools.TypeByName("AdvancedVehicleOptionsUID.Compatibility.NoBigTruckCompatibilityPatch");
@@ -64,6 +70,10 @@ namespace NoBigTruck
 
         private void Postfix(Harmony harmony, Type type, string name, Type[] args, MethodInfo patch) =>
             Apply(harmony, type, name, args, patch, "POSTFIX", target => harmony.Patch(target, postfix: new HarmonyMethod(patch)));
+
+        private void Dispatch(Harmony harmony, Type type, string name) =>
+            Apply(harmony, type, name, null, Method(typeof(Patches), nameof(Patches.DispatchPrefix)), "PREFIX+FINALIZER",
+                target => harmony.Patch(target, prefix: new HarmonyMethod(Method(typeof(Patches), nameof(Patches.DispatchPrefix))), finalizer: new HarmonyMethod(Method(typeof(Patches), nameof(Patches.DispatchFinalizer)))));
 
         private void Apply(Harmony harmony, Type type, string name, Type[] args, MethodInfo patch, string kind, Action<MethodInfo> patchAction)
         {
