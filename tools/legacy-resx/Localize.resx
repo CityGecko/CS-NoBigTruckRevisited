@@ -153,16 +153,14 @@
   <data name="Mod_WhatsNewMessage1_2_4" xml:space="preserve">
     <value>[TRANSLATION] Added Danish, Portuguese and Turkish translations</value>
   </data>
-  <data name="Mod_WhatsNewMessage1_3_2" xml:space="preserve">
-    <value>[UPDATED] Updated for game version 1.21.2-f5.
-[FIXED] The "Max width" setting now changes the width instead of the length.
-[FIXED] Shipped the real System.Xml.Linq library again (the settings could not be loaded).
-[FIXED] Large vehicles were still sent to buildings covered by a rule when a truck looked for a new target on its way (rest of the load after a partial delivery, arrival from a cargo train or ship).
-[NEW] Wall-to-wall commercial buildings can be selected as target building type. Existing rules keep their selection, enable it there if needed.</value>
-  </data>
   <data name="Mod_WhatsNewMessage1_3" xml:space="preserve">
     <value>[UPDATED] Added Plazas &amp; Promenades DLC support.
 [TRANSLATION] Added Polish and Romanian translations.</value>
+  </data>
+  <data name="Mod_WhatsNewMessage1_3_1" xml:space="preserve">
+    <value>[UPDATED] Added Race Day DLC Support.
+[UPDATE] Updated ModsCommon.
+[TRANSLATION] Added Thai and Ukrainian translations.</value>
   </data>
   <data name="RulesTab" xml:space="preserve">
     <value>Rules</value>
@@ -196,11 +194,5 @@
   </data>
   <data name="TargetTourist" xml:space="preserve">
     <value>Tourist</value>
-  </data>
-  <data name="TargetWallToWall" xml:space="preserve">
-    <value>Wall-to-wall</value>
-  </data>
-  <data name="TargetWallToWall_Tooltip" xml:space="preserve">
-    <value>Commercial buildings in districts with the "Wall-to-Wall" district specialization: high-density shop rows built without gaps. Asset names start with MCW2W.</value>
   </data>
 </root>

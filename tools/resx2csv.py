@@ -1,3 +1,5 @@
+# Source: tools/legacy-resx = Localize*.resx from Will's branch "workshop" (will258012/NoBigTruck, Crowdin state
+# incl. Thai and Ukrainian) plus Vietnamese from MacSergey's branch "Translation" (Aug 2024).
 # Converts the No Big Truck 1.x translations (Properties/Localize*.resx, community translations via Crowdin,
 # MIT like the mod) into AlgernonCommons translation files (NoBigTruck/Translations/<language>.csv).
 # New texts of 2.0 exist in English and German only; other languages fall back to English.
@@ -43,6 +45,7 @@ NEW = {
         "AVO_MISSING": "No Big Truck Revisited: Advanced Vehicle Options is not enabled. Vehicles are marked as \"Large Vehicle\" in Advanced Vehicle Options; without it, this mod has nothing to filter.",
         "WHATSNEW_2_0_0_1": "No Big Truck Revisited continues No Big Truck by MacSergey for game version 1.21.",
         "WHATSNEW_2_0_0_2": "Your existing rules are kept.",
+        "TARGET_WALLTOWALL": "Wall-to-wall",
         "TARGET_WALLTOWALL_TOOLTIP": "Commercial buildings in districts with the \"Wall-to-Wall\" district specialization (Plazas & Promenades DLC): high-density shop rows built without gaps. Asset names start with MCW2W.",
         "WHATSNEW_2_0_0_3": "New target type Wall-to-wall (district specialization of the Plazas & Promenades DLC).",
         "WHATSNEW_2_0_0_5": "New options page: one group of checkboxes per rule; every change is saved immediately and shown next to the rule (\"Saved at ...\").",
@@ -63,6 +66,7 @@ NEW = {
         "AVO_MISSING": "No Big Truck Revisited: Advanced Vehicle Options ist nicht aktiv. Fahrzeuge werden in Advanced Vehicle Options als \"Large Vehicle\" markiert; ohne diesen Mod hat No Big Truck nichts zu filtern.",
         "WHATSNEW_2_0_0_1": "No Big Truck Revisited führt No Big Truck von MacSergey für Spielversion 1.21 weiter.",
         "WHATSNEW_2_0_0_2": "Deine bestehenden Regeln bleiben erhalten.",
+        "TARGET_WALLTOWALL": "Wall-to-Wall",
         "TARGET_WALLTOWALL_TOOLTIP": "Gewerbe in Bezirken mit der Bezirks-Spezialisierung \"Wall-to-Wall\" (DLC Plazas & Promenades): lückenlos aneinandergebaute Ladenzeilen hoher Dichte. Assetnamen beginnen mit MCW2W.",
         "WHATSNEW_2_0_0_3": "Neuer Zieltyp Wall-to-Wall (Bezirks-Spezialisierung aus dem DLC Plazas & Promenades).",
         "WHATSNEW_2_0_0_5": "Neue Optionsseite: je Regel eine Gruppe mit Checkboxen; jede Änderung wird sofort gespeichert und neben der Regel angezeigt (\"Gespeichert um ...\").",
@@ -83,7 +87,7 @@ LANGUAGE_NAMES = {
     "cs-CZ": "Čeština", "da-DK": "Dansk", "de-DE": "Deutsch", "en-EN": "English", "en-GB": "English (UK)",
     "es-ES": "Español", "fi-FI": "Suomi", "fr-FR": "Français", "hu-HU": "Magyar", "id-ID": "Bahasa Indonesia",
     "it-IT": "Italiano", "ja-JP": "日本語", "ko-KR": "한국어", "nl-NL": "Nederlands", "pl-PL": "Polski",
-    "pt-PT": "Português", "ro-RO": "Română", "ru-RU": "Русский", "tr-TR": "Türkçe", "zh-CN": "简体中文",
+    "pt-PT": "Português", "ro-RO": "Română", "ru-RU": "Русский", "th-TH": "ไทย", "tr-TR": "Türkçe", "uk-UA": "Українська", "vi-VN": "Tiếng Việt", "zh-CN": "简体中文",
     "zh-TW": "繁體中文",
 }
 
